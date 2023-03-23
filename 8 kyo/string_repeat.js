@@ -16,3 +16,14 @@ Examples (input -> output)
 6, "I" -> "IIIIII"
 5, "Hello" -> "HelloHelloHelloHelloHello"
 */
+
+function repeatStr (n, s) {
+    if (n <= 1) {
+      return s;
+    } else {
+      return s+repeatStr(--n, s);
+    }
+}
+
+console.log(repeatStr(6, "I"));
+console.log(repeatStr(5, "Hello"));
