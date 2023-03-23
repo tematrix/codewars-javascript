@@ -21,3 +21,8 @@ Examples (input --> output):
 -100 --> "-100"
 */
 
+function numberToString(num) {
+    return `${num}`;
+}
+
+console.log(typeof(numberToString(123)));
