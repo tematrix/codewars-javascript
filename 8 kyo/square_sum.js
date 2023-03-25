@@ -11,3 +11,17 @@ For example, for [1, 2, 2] it should return 9 because
 Например, для [1, 2, 2] он должен возвращать 9
 1^2+2^2+2^2=9
 */
+
+function squareSum(numbers){
+    if (numbers) {
+      let r = 0;
+      for (let i = 0; i < numbers.length; i++) {
+        r += numbers[i]**2;
+      }
+      return r;
+    } else {
+      return 0;
+    }
+}
+
+console.log(squareSum([1,2,2]));
