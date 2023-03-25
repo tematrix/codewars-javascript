@@ -16,3 +16,16 @@ You can assume, for the purpose of this kata, that the supplied array will not b
 Учитывая [34, -345, -1, 100], ваше решение вернет -345
 Вы можете предположить, для целей этого ката, что предоставленный массив не будет пустым.
 */
+
+function  findSmallestInt(args) {
+    let small = args[0];
+    for (let i = 1; i < args.length; i++) {
+        if (args[i] < small) {
+          small = args[i]
+        }
+    }
+    return small;
+}
+
+console.log(findSmallestInt([34,15,88,2]));
+console.log(findSmallestInt([34,-345,-1,100]));
