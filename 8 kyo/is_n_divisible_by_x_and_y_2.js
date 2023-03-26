@@ -20,3 +20,12 @@ Examples:
 3) n = 100, x = 5, y = 3 => ложно, потому что 100 не делится на 3
 4) n = 12, x = 7, y = 5 => ложно, потому что 12 не делится ни на 7, ни на 5
 */
+
+function isDivisible(n, x, y) {
+    return n % x==0 && n % y ==0;
+}
+
+console.log(isDivisible(3,1,3));
+console.log(isDivisible(12,2,6));
+console.log(isDivisible(100,5,3));
+console.log(isDivisible(12,7,5));
