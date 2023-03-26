@@ -32,3 +32,22 @@ Hint: Don't forget to check for bad values like null/undefined
 
 Подсказка: Не забудьте проверить наличие неверных значений, таких как null/undefined
 */
+
+function countSheeps(a) {
+    let s = 0;
+    for (let i = 0; i < a.length; i++) {
+      if (a[i]) {
+        s++;
+      }
+    }
+    return s;
+}
+
+let arr = [true,  true,  true,  false,
+    true,  true,  true,  true ,
+    true,  false, true,  false,
+    true,  false, false, true ,
+    true,  true,  true,  true ,
+    false, false, true,  true];
+
+console.log(countSheeps(arr));
