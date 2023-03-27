@@ -25,3 +25,22 @@ Note: for this kata y isn't considered a vowel.
 
 Примечание: в этом ката y не считается гласной.
 */
+
+function disemvowel(str) {
+    const lc = (i) => {
+      return i.toLowerCase();    
+    };
+    
+    let arr = str.split('');
+    
+    for (let i = 0; i < arr.length; i++) {
+      if (lc(arr[i]) == 'a' || lc(arr[i]) == 'e' || lc(arr[i]) == 'i' || lc(arr[i]) == 'o' || lc(arr[i]) == 'u') {
+        arr.splice(i, 1);
+        i--;
+      }    
+    }
+    
+    return arr.join('');
+}
+
+console.log(disemvowel('This website is for losers LOL!'));
