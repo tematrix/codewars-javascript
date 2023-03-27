@@ -22,3 +22,16 @@ Happy Coding!
 
 Счастливого кодирования!
 */
+
+function squareDigits(num){
+    const a = String(num).split('');
+    
+    for (let i = 0; i < a.length; i++) {
+      a[i] = Number(a[i])**2;
+    }
+    
+    return Number(a.join(''));
+}
+
+console.log(squareDigits(9119));
+console.log(squareDigits(765));
