@@ -20,3 +20,24 @@ The parameter of accum is a string which includes only letters from a..z and A..
 
 Параметр accum - это строка, которая включает в себя только буквы из a..z и A..Z.
 */
+
+function accum(s) {
+	const arr = s.split(''); let res = '';
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < i+1; j++) {
+      if (j == 0) {
+        res += arr[i].toUpperCase();
+      } else {
+        res += arr[i].toLowerCase();
+      }      
+    }
+    if (i !== arr.length - 1) {
+      res += '-';
+    }
+  }
+  return res;
+}
+
+console.log(accum('abcd'));
+console.log(accum('RqaEzty'));
+console.log(accum('cwAt'));
