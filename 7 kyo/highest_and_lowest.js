@@ -28,3 +28,24 @@ Output string must be two numbers separated by a single space, and highest numbe
 Во входной строке всегда будет хотя бы одно число.
 Выходная строка должна состоять из двух чисел, разделенных одним пробелом, причем наибольшее число должно быть первым.
 */
+
+function highAndLow(numbers){
+    const arr = numbers.split(' ');
+    
+    let min = arr[0], max = arr[0];
+    
+    for (let i = 1; i < arr.length; i++) {
+      if (+arr[i] < +min) {
+        min = arr[i];      
+      }
+      if (+arr[i] > +max) {
+        max = arr[i];
+      }
+    }
+    
+    return `${max} ${min}`
+}
+
+console.log(highAndLow("1 2 3 4 5"));
+console.log(highAndLow("1 2 -3 4 5"));
+console.log(highAndLow("1 9 3 4 -5"));
