@@ -24,3 +24,13 @@ Input: 123456789 Output: 987654321
 
 Вход: 123456789 Выход: 987654321
 */
+
+function descendingOrder(n){
+    const arr = String(n).split('');
+    n = arr.sort((a, b) => {return b - a;}).join('');
+    return Number(n);
+}
+
+console.log(descendingOrder(42145));
+console.log(descendingOrder(145263));
+console.log(descendingOrder(123456789));
