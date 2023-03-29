@@ -50,3 +50,18 @@ Kata.getMiddle("A") должен возвращать "A"
 
 Средний символ(ы) слова, представленного в виде строки.
 */
+
+function getMiddle(s) {
+    let r = '', arr = s.split('');
+    if (arr.length % 2 == 0) {
+      r = `${arr[Math.floor(arr.length/2)-1]}${arr[Math.ceil(arr.length/2)]}`;
+    } else {
+      r = `${arr[Math.floor(arr.length/2)]}`;
+    }
+    return r;  
+}
+
+console.log(getMiddle('test'));
+console.log(getMiddle('testing'));
+console.log(getMiddle('middle'));
+console.log(getMiddle('A'));
