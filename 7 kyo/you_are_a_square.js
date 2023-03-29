@@ -52,3 +52,18 @@ Examples
 25 => верно
 26 => ложь
 */
+
+var isSquare = function(n){
+    if (n >= 0 && Math.trunc(n**(1/2)) === n**(1/2)) {
+      return true;
+    } else {
+      return false;
+    }
+};
+
+console.log(isSquare(-1));
+console.log(isSquare(0));
+console.log(isSquare(3));
+console.log(isSquare(4));
+console.log(isSquare(25));
+console.log(isSquare(26));
