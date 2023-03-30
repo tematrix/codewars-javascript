@@ -26,3 +26,17 @@ XO("ooxXm") => true
 XO("zpzpzpp") => true // при отсутствии 'x' и 'o' должно возвращаться значение true
 XO("zzoo") => false
 */
+
+function XO(str) {
+    const fun = (a, i) => {return a.filter(item => item === i);}, arr = str.toLowerCase().split('');
+    if (fun(arr, 'x').length === fun(arr, 'o').length) {
+        return true;
+    }
+    return false;   
+}
+
+console.log(XO('ooxx'));
+console.log(XO('xooxx'));
+console.log(XO('ooxXm'));
+console.log(XO('zpzpzpp'));
+console.log(XO('zzoo'));
