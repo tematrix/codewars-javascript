@@ -36,3 +36,19 @@ maskify("Nananananananananananananananana Batman!") == "########################
 маскифицировать("Скиппи") == "##иппи"
 maskify("Nananananananananananananananana Бэтмен!") == "####################################человек!"
 */
+
+function maskify(cc) {
+    let a = cc.split('');
+    if (a.length > 4) {
+      for (let i = a.length-5; i >= 0; i--) {
+        a[i] = '#';
+      }
+    }
+    return a.join('');
+}
+
+console.log(maskify("4556364607935616"));
+console.log(maskify(     "64607935616"));
+console.log(maskify(               "1"));
+console.log(maskify("Skippy"));
+console.log(maskify("Nananananananananananananananana Batman!"));
