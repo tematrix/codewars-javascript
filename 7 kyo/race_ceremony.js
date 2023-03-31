@@ -46,3 +46,19 @@ Examples (input -> output)
 6 -> [2, 3, 1]
 10 -> [4, 5, 1]
 */
+
+function racePodium(blocks) {
+    const arr = [];
+    arr[1] = Math.ceil(blocks/3)+1;
+    arr[0] = arr[1]-1;
+    arr[2] = blocks - (arr[0] + arr[1]);
+    if (arr[2] <= 0) {
+        arr[0] -= 1;
+        arr[2] = blocks - (arr[0] + arr[1]);
+    }
+    return arr;
+}
+
+console.log(racePodium(11));
+console.log(racePodium(6));
+console.log(racePodium(10));
