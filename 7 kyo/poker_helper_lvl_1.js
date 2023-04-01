@@ -75,3 +75,86 @@ isSet - должен возвращать значение false.
 
 PS: Если эта ката будет интересной, я создам следующий уровень со следующими комбинациями
 */
+
+function isPair(hand, flop){
+    if (isSame(hand, flop)) {
+      return false;
+    }
+    const v = getVals(hand, flop);
+    for (let i = 1; i < v.length; i++) {
+      if (v[i-1] === v[i]) {
+        return true;
+      }    
+    }
+    return false;  
+}
+  
+  function isTwoPair(hand, flop) {
+    if (isSame(hand, flop)) {
+      return false;
+    }
+    const v = getVals(hand, flop);
+    v.push('X');
+    let numPairs = 0;
+    for (let i = 2; i < v.length; i++) {
+      if (v[i-2] === v[i-1] && v[i-1] !== v[i]) {
+        i++;
+        numPairs++;                
+      }      
+    }
+    if (numPairs === 2) {
+      return true;
+    }
+    return false;
+}
+    
+  function isSet(hand, flop) {
+    if (isSame(hand, flop)) {
+      return false;
+    }
+    const v = getVals(hand, flop);
+    for (let i = 2; i < v.length; i++) {
+      if (v[i] === v[i-1] && v[i] === v[i-2]) {
+        return true;
+      }    
+    }
+    return false;  
+}
+  
+  function getVals(hand, flop) {
+    const all = [...hand, ...flop], vals = [];
+    for (let i = 0; i < all.length; i++) {
+      vals[i] = all[i].val;
+    }
+    return vals.sort();
+}
+  
+  function isSame(hand, flop) {
+    for (let i = 0; i < hand.length; i++) {
+      for (let j = 0; j < flop.length; j++) {
+        if (hand[i].val === flop[j].val && hand[i].suit === flop[j].suit) {
+          return true;
+        }
+      }
+    }
+    if (hand[0].val === hand[1].val && hand[0].suit === hand[1].suit) {
+      return true;
+    }
+    if (flop[0].val === flop[1].val && flop[0].suit === flop[1].suit) {
+      return true;
+    }
+    if (flop[0].val === flop[2].val && flop[0].suit === flop[2].suit) {
+      return true;
+    }
+    if (flop[2].val === flop[1].val && flop[2].suit === flop[1].suit) {
+      return true;
+    }
+    return false;
+}
+
+console.log(isPair([ {val: 'Ace', suit: 'Pikes'}, {val: '9', suit: 'Hearts'} ],
+[{val: '9', suit: 'Tiles'}, {val: 'Jack', suit: 'Hearts'}, {val: '10', suit: 'Clovers'}]));
+console.log(isTwoPair([ {val: 'Ace', suit: 'Pikes'}, {val: '9', suit: 'Hearts'} ],
+[{val: '9', suit: 'Tiles'}, {val: 'Jack', suit: 'Hearts'}, {val: '10', suit: 'Clovers'}]));
+console.log(isSet([ {val: 'Ace', suit: 'Pikes'}, {val: '9', suit: 'Hearts'} ],
+[{val: '9', suit: 'Tiles'}, {val: 'Jack', suit: 'Hearts'}, {val: '10', suit: 'Clovers'}]));
