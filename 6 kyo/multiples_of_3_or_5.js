@@ -17,3 +17,18 @@ Note: If the number is a multiple of both 3 and 5, only count it once.
 
 Примечание: Если число кратно как 3, так и 5, сосчитайте его только один раз.
 */
+
+function solution(number){
+    if (number < 0) {
+      return 0;
+    }
+    let sum = 0;
+    for (let i = 0; i < number; i++) {
+      if (i % 3 === 0 || i % 5 === 0) {
+        sum += i;
+      } 
+    }
+    return sum;
+}
+
+console.log(solution(10));
