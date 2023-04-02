@@ -24,3 +24,19 @@ spin Words( "Эй, товарищи воины" ) => возвращает "Эй,
 spinWords("Это тест") => возвращает "Это тест"
 spinWords("Это еще один тест" )=> возвращает "Это тест рехтона"
 */
+
+function spinWords(string){
+    let a = string.split(' '), b = [], j = 0;  
+    for (let i of a) {
+      if (i.length > 4) {      
+        i = i.split('').reverse().join('');      
+      }
+      b[j] = i;
+      j++;
+    }  
+    return b.join(' ');
+}
+
+console.log(spinWords("Hey fellow warriors"));
+console.log(spinWords("This is a test"));
+console.log(spinWords("This is another test"));
