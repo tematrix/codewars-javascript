@@ -24,3 +24,20 @@ Examples
 [0,1,0,1,0] должно возвращать 0, потому что это происходит 3 раза (что нечетно).
 [1,2,2,3,3,3,4,3,3,3,2,2,1] должно возвращать 4, потому что оно появляется 1 раз (что нечетно).
 */
+
+function findOdd(arr) {
+  for (let i of arr) {
+    let c = arr.filter(a => a === i);
+    if (c.length % 2 !== 0) {
+      return i;
+    } else {
+      continue;
+    }
+  }
+}
+
+console.log(findOdd([7]));
+console.log(findOdd([0]));
+console.log(findOdd([1,1,2]));
+console.log(findOdd([0,1,0,1,0]));
+console.log(findOdd([1,2,2,3,3,3,4,3,3,3,2,2,1]));
