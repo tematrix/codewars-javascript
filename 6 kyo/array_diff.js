@@ -22,3 +22,17 @@ arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
 arrayDiff([1,2,2,2,3],[2]) == [1,3]
 */
+
+function arrayDiff(a, b) {
+    for (let j of b) {
+      for (let i = 0; i < a.length; i++) {
+        if (a[i] === j) {
+          a.splice(i, 1);
+          i--;
+        }
+      }
+    }
+    return a;
+}
+
+console.log(arrayDiff([1,2,2,2,3],[2]));
