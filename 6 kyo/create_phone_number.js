@@ -20,3 +20,12 @@ Don't forget the space after the closing parentheses!
 
 Не забудьте про пробел после закрывающих скобок!
 */
+
+function createPhoneNumber(numbers){
+    const s = (n) => {
+      return numbers.splice(0, n).join('');    
+    };
+    return `(${s(3)}) ${s(3)}-${s(4)}`;  
+}
+
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
