@@ -13,3 +13,9 @@ Example: The binary representation of 1234 is 10011010010, so the function shoul
 
 Пример: Двоичное представление 1234 равно 10011010010, поэтому в этом случае функция должна возвращать 5
 */
+
+var countBits = function(n) {
+    return n == 0 ? 0 : n.toString(2).split('').reduce((s, c) => Number(s) + Number(c));
+};
+
+console.log(countBits(1234));
