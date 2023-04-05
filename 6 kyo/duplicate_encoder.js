@@ -30,3 +30,16 @@ If you read "...It Should encode XXX", the "XXX" is the expected result, not the
 В сообщениях с утверждениями может быть неясно, что они отображают на некоторых языках. 
 Если вы прочтете"...Он должен кодировать XXX", "XXX" - это ожидаемый результат, а не входные данные!
 */
+
+function duplicateEncode(word){
+    let r = '', a = word.toLowerCase().split('');
+    for (let i of a) {
+      a.filter(e => e === i).length > 1 ? r += ')' : r += '(';
+    }
+    return r;
+}
+
+console.log(duplicateEncode('din'));
+console.log(duplicateEncode('recede'));
+console.log(duplicateEncode('Success'));
+console.log(duplicateEncode('(( @'));
