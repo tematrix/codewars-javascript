@@ -30,3 +30,27 @@ Example
 "aA11" -> 2 # 'a' и '1'
 "ABBA" -> 2 # 'A' и 'B' встречаются дважды
 */
+
+function duplicateCount(text){
+    let a = text.toLowerCase().split('').sort(), c = 0;
+    for (let i = 0; i < a.length; i++) {
+      let b = a.filter(e => e == a[0]);
+      if (b.length > 1) {
+        c++; 
+        a.splice(0, b.length);
+        i = 0;
+      } else {
+        a.splice(0, 1);
+        i = 0;
+      }   
+    }
+    return c;
+}
+
+console.log(duplicateCount("abcde"));
+console.log(duplicateCount("aabbcde"));
+console.log(duplicateCount("aabBcde"));
+console.log(duplicateCount("indivisibility"));
+console.log(duplicateCount("Indivisibilities"));
+console.log(duplicateCount("aA11"));
+console.log(duplicateCount("ABBA"));
