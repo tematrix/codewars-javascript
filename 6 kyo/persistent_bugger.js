@@ -22,3 +22,20 @@ For example (Input --> Output):
 999 --> 4 (потому что 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, и, наконец, 1*2 = 2)
 4 --> 0 (потому что 4 уже является однозначным числом)
 */
+
+function persistence(num) {
+    if (num < 10) {
+      return 0;
+    } else {
+      let a = String(num).split('');
+      num = 1;
+      for (let i of a) {
+        num *= Number(i);
+      }
+      return 1 + persistence(num);
+    }
+}
+
+console.log(persistence(39));
+console.log(persistence(999));
+console.log(persistence(4));
