@@ -22,3 +22,24 @@ uniqueInOrder([1,2,2,3,3])       == [1,2,3]
 Уникальный по порядку('ABBCcAD') == ['A', 'B', 'C', 'c', 'A', 'D']
 Уникальный порядок([1,2,2,3,3]) == [1,2,3]
 */
+
+var uniqueInOrder=function(iterable){
+    if (typeof iterable == 'string') {
+      iterable = iterable.split('');
+    }
+    if (iterable.length <= 0) {
+      return iterable;
+    }
+    let result = [];
+    for (let i = 1; i < iterable.length; i++) {
+      if (iterable[i] !== iterable[i-1]) {
+        result.push(iterable[i-1]);
+      }
+    }
+    result.push(iterable[iterable.length-1]);
+    return result;
+};
+
+console.log(uniqueInOrder('AAAABBBCCDAABBB'));
+console.log(uniqueInOrder('ABBCcAD'));
+console.log(uniqueInOrder([1,2,2,3,3]));
