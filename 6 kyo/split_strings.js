@@ -20,3 +20,17 @@ Examples:
 * 'abc' => ['ab', 'c_']
 * 'abcdef' => ['ab', 'cd', 'ef'].
 */
+
+function solution(str){
+    let res = []; str = str.split('');
+    if (str.length % 2 != 0) {
+      str.push('_');
+    }
+    for (let i = 0; i < str.length; i+=2) {
+      res.push(`${str[i]}${str[i+1]}`);
+    }
+    return res;
+}
+
+console.log(solution('abc'));
+console.log(solution('abcdef'));
