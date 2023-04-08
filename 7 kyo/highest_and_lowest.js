@@ -43,7 +43,7 @@ function highAndLow(numbers){
       }
     }
     
-    return `${max} ${min}`
+    return `${max} ${min}`;
 }
 
 console.log(highAndLow("1 2 3 4 5"));
