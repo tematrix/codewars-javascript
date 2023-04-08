@@ -18,3 +18,21 @@ Examples
 [5, 8, 6, 3, 4] => [3, 8, 6, 5, 4]
 [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] => [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
 */
+
+function sortArray(array) {
+    let sub = [], result = [];
+    array.forEach(e => {
+      if (e % 2 != 0) {
+        sub.push(e);
+      }
+    });
+    sub.sort((a, b) => {return b - a});  
+    array.forEach(e => {
+      e % 2 != 0 ? result.push(sub.pop()) : result.push(e);       
+    });  
+    return result;
+}
+
+console.log(sortArray([7, 1]));
+console.log(sortArray([5, 8, 6, 3, 4]));
+console.log(sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]));
