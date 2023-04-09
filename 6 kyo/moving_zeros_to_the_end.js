@@ -12,3 +12,18 @@ moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
 
 moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
 */
+
+function moveZeros(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n; i++) {
+      if (arr[i] === 0) {
+        arr.splice(i, 1);      
+        arr.push(0);
+        n--;
+        i--;
+      }
+    }
+    return arr;
+}
+
+console.log(moveZeros([false,1,0,1,2,0,1,3,"a"]));
