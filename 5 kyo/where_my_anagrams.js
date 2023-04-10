@@ -42,3 +42,14 @@ anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']) => ['aabb', 'bbaa'].
 
 анаграммы('laser', ['lazing', 'lazy', 'lacer']) => []
 */
+
+function anagrams(word, words) {
+    const func = (e) => {
+      return e.split('').sort().join('');
+    };
+    return words.filter(item => func(item) === func(word));
+}
+
+console.log(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']));
+console.log(anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']));
+console.log(anagrams('laser', ['lazing', 'lazy',  'lacer']));
