@@ -104,3 +104,20 @@ if you want to translate, please ask before translating.
 и не могут стать таковыми. Следовательно, путь результата сам по себе является ["NORTH", "WEST", "SOUTH", "EAST"].
 если вы хотите перевести, пожалуйста, спросите перед переводом.
 */
+
+function dirReduc(arr){
+    let changes = false;  
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] == "NORTH" && arr[i+1]  == "SOUTH" ||
+          arr[i] == "SOUTH" && arr[i+1]  == "NORTH" ||
+          arr[i] == "EAST" && arr[i+1]  == "WEST" ||
+          arr[i] == "WEST" && arr[i+1]  == "EAST") {
+        arr.splice(i, 2);
+        changes = true;
+        i--;      
+      }
+    }  
+    return changes ? dirReduc(arr) : arr;  
+}
+
+console.log(dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]));
