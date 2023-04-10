@@ -22,3 +22,28 @@ SS = секунды, дополненные до 2 цифр, диапазон: 0
 
 Некоторые примеры вы можете найти в тестовых приспособлениях.
 */
+
+function humanReadable (seconds) {
+    const cnt = (n) => {
+      let i = 0;
+      while (n >= 60) {
+        n = n - 60;
+        i++;
+      }
+      return [i, n];
+    };
+    
+    let s = cnt(seconds)[1],
+        m = cnt(seconds)[0],
+        h = cnt(m)[0];
+    
+    m = cnt(m)[1];
+      
+    const twn = (v) => {
+      return v < 10 ? `0${v}` : `${v}`;
+    };
+    
+    return `${twn(h)}:${twn(m)}:${twn(s)}`;  
+}
+
+console.log(humanReadable(2000000));
