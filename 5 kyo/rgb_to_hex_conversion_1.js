@@ -30,3 +30,26 @@ rgb(255, 255, 300) // возвращает FFFFFF
 rgb(0,0,0) // возвращает 000000
 rgb(148, 0, 211) // возвращает 9400D3
 */
+
+function rgb(r, g, b){
+    const val = (n) => {
+      n < 0 ? n = 0 : n;
+      n > 255 ? n = 255 : n;
+      return n;
+    };
+    
+    const hex = (v) => {
+      if (v.toString(16).length < 2) {
+        return '0' + v.toString(16).toUpperCase();
+      } else {
+        return v.toString(16).toUpperCase();
+      }
+    };
+    
+    return hex(val(r)) + hex(val(g)) + hex(val(b));
+}
+
+console.log(rgb(255, 255, 255));
+console.log(rgb(255, 255, 300));
+console.log(rgb(0,0,0));
+console.log(rgb(148, 0, 211));
