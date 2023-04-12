@@ -30,3 +30,22 @@ Examples
 "    Hello World" => "#HelloWorld"
 "" => false
 */
+
+function generateHashtag (str) {  
+    if (str.trim().length == 0) {return false;}  
+    let text = str.trim().split('');
+    text[0] = text[0].toUpperCase();
+    for (let i = 1; i < text.length; i++) {
+      if (text[i] == ' ') {
+        text.splice(i, 1);
+        text[i] = text[i].toUpperCase();
+        i--;
+      }
+    }
+    if (text.length > 139) {return false;}
+    return `#${text.join('')}`;
+}
+
+console.log(generateHashtag(' Hello there thanks for trying my Kata'));
+console.log(generateHashtag('    Hello     World   '));
+console.log(generateHashtag(''));
