@@ -50,3 +50,29 @@ All numbers in the list are positive numbers and the list can be empty.
 
 Все числа в списке - положительные числа, и список может быть пустым.
 */
+
+function orderWeight(s) {
+    let m = s.trim().split(' ');
+    m.sort((a, b) => {
+      if (sum(a) > sum(b)) {return 1;}
+      if (sum(a) < sum(b)) {return -1;}
+      if (sum(a) == sum(b)) {
+        if (a > b) {return 1;}
+        if (a == b) {return 0;}
+        if (a < b) {return -1;}
+      }    
+    });
+    
+    return m.join(' ');
+    
+    function sum(arg) {
+      let res = 0;
+      arg.split('');
+      for (let i of arg) {
+        res += Number(i);
+      }
+      return res;
+    }
+}
+
+console.log(orderWeight('56 65 74 100 99 68 86 180 90'));
