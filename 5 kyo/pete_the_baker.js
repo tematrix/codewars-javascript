@@ -34,3 +34,29 @@ cakes({мука: 500, сахар: 200, яйца: 1}, {мука: 1200, сахар
 // должно возвращать 0
 cakes({яблоки: 3, мука: 300, сахар: 150, молоко: 100, масло: 100}, {сахар: 500, мука: 2000, молоко: 2000});
 */
+
+function cakes(recipe, available) {
+    let r = Object.entries(recipe);
+    let a = Object.entries(available);
+    let c = [];
+    if (r.length > a.length) {
+        return 0;
+    }
+    for (let eR of r) {        
+        if (a.find(eA => eA[0] === eR[0]) === undefined) {
+            return 0;
+        }
+    }
+    for (let eR of r){
+        for (let eA of a) {
+            if (eR[0] == eA[0]) {
+                c.push(Math.floor(eA[1]/eR[1]));
+            }
+        }
+    }
+    c.sort((a,b) => a - b);
+    return c[0];
+}
+
+console.log(cakes({flour: 500, sugar: 200, eggs: 1}, {flour: 1200, sugar: 1200, eggs: 5, milk: 200}));
+console.log(cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000}));
