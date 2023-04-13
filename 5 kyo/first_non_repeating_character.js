@@ -28,3 +28,15 @@ string ("") or None -- see sample tests.
 Если строка содержит все повторяющиеся символы, она должна возвращать пустую 
 строку ("") или None - см. примеры тестов.
 */
+
+function firstNonRepeatingLetter(s) {
+    let a = s.split('');
+    for (let i of a) {
+      if (a.filter(e => e.toLowerCase() == i.toLowerCase()).length == 1) {
+        return i;
+      }    
+    }
+    return '';      
+}
+
+console.log(firstNonRepeatingLetter('sTreSS'));
