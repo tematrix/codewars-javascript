@@ -28,3 +28,16 @@ All inputs will be valid.
 
 Все вводимые данные будут действительными.
 */
+
+function amountOfPages(summary){
+    let book = '';
+    let page = 0;
+    while (book.length < summary) {
+        page++;
+        book += page;        
+    }
+    return page;  
+}
+
+console.log(amountOfPages('25'));
+console.log(amountOfPages('100000'));
