@@ -30,3 +30,22 @@ foo099 -> foo100
 
 Внимание: Если в числе есть ведущие нули, необходимо учитывать количество цифр.
 */
+
+function incrementString (t) {
+    if (t == '') {return '1';}
+    let num = t.match(/[0-9]/gi),
+        ltr = t.match(/[A-Z]/gi);        
+    if (num == null) {return t + '1';}
+    if (ltr == null) {ltr = [];}
+    let len = num.length; 
+    num = +(num.join('')) + 1;
+    let n = len - String(num).length;
+    if (n < 0) {n = 0;}
+    return ltr.join('') + '0'.repeat(n) + num;
+}
+
+console.log(incrementString('foo'));
+console.log(incrementString('foobar23'));
+console.log(incrementString('foo0042'));
+console.log(incrementString('foo9'));
+console.log(incrementString('foo099'));
