@@ -16,3 +16,17 @@ Return True if it is, False if not. Ignore numbers and punctuation.
 Дана строка. Необходимо определить, является ли она панграммой. 
 Если да, вернуть True, если нет - False. Цифры и знаки препинания не учитывать.
 */
+
+function isPangram(string){
+    const alpha = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    string = string.toLowerCase();
+    for (let e of alpha) {
+        if (!string.includes(e)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+console.log(isPangram('Hello world!'));
+console.log(isPangram('sfsfsewwabcdefghijklmnopqrstuvwxyzsflsdnflfslfs'));
