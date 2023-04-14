@@ -24,3 +24,20 @@ The input will always be an array.
 
 Входной параметр всегда будет массивом.
 */
+
+function deepCount(a){
+    let c = 0;
+    for (let e of a) {
+        if (Array.isArray(e)) {
+            c += 1 + deepCount(e);
+        } else {
+            c++;
+        }
+    }
+    return c;
+}
+
+console.log(deepCount([]));
+console.log(deepCount([1, 2, 3]));
+console.log(deepCount(["x", "y", ["z"]]));
+console.log(deepCount([1, 2, [3, 4, [5]]]));
