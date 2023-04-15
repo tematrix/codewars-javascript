@@ -18,3 +18,13 @@ You need to write regex that will validate a password to make sure it meets the 
 - Пароль должен содержать цифру.
 - Пароль может содержать только буквенно-цифровые символы (заметьте, что символ '_' не является буквенно-цифровым).
 */
+
+const REGEXP = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[A-Za-z0-9]{6,}$/;
+
+console.log(REGEXP.test('abcdSDfg123456!'));
+console.log(REGEXP.test('abcdfg123456'));
+console.log(REGEXP.test('abcdfgASFSfsgdsg'));
+console.log(REGEXP.test('1234567890'));
+console.log(REGEXP.test('ABcd1'));
+
+console.log(REGEXP.test('ABCdef123'));
