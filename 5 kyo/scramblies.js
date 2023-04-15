@@ -27,3 +27,23 @@ scramble('rkqodlw', 'world') ==> True
 scramble('cedewaraaossoqqyt', 'codewars') ==> True
 scramble('katas', 'steak') ==> False
 */
+
+function scramble(str1, str2) {
+    let c = {}, k = 0;
+    for (let i = 0; i < str2.length; i++) {
+      if (!c[str2[i]]) {
+        c[str2[i]] = 0;
+        k++;
+      }
+      c[str2[i]]++;
+    }
+    for (let i = 0; i < str1.length; i++) {
+      if (!c[str1[i]]) {continue;}
+      if (!--c[str1[i]] && !--k) {return true;}
+    }
+    return false;
+}
+
+console.log(scramble('rkqodlw', 'world'));
+console.log(scramble('cedewaraaossoqqyt', 'codewars'));
+console.log(scramble('katas', 'steak'));
