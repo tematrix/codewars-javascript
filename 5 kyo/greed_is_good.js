@@ -51,3 +51,27 @@ If you mutate the input, you will not be able to pass all the tests.
 В некоторых языках программирования допускается изменять входные данные функции. Это не должно делаться. 
 Если вы измените входные данные, вы не сможете пройти все тесты.
 */
+
+function score(dice) {
+    let score = 0;
+    dice = dice.sort((a,b) => a-b);  
+    for (let i = 1; i < dice.length-1; i++) {
+      if (dice[i-1] == dice[i] && dice[i] == dice[i+1]) {
+        dice[i] == 1 ? score += 1000 : score += dice[i]*100;
+        dice.splice(i-1, 3);
+      }
+    }
+    for (let i = 0; i < dice.length; i++) {
+      if (dice[i] == 1) {
+        score += 100;
+      }
+      if (dice[i] == 5) {
+        score += 50;
+      }
+    }
+    return score;
+}
+
+console.log(score([5,1,3,4,1]));
+console.log(score([1,1,1,3,1]));
+console.log(score([2,4,4,5,4]));
