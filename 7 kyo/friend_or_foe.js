@@ -24,3 +24,14 @@ Note: keep the original order of the names in the output.
 То есть, friend ["Ryan", "Kieran", "Mark"] shouldBe ["Ryan", "Mark"]
 Примечание: сохраняйте исходный порядок имен в выходном списке.
 */
+
+function friend(friends){
+    let result = [];
+    friends.forEach(e => {
+      e.length == 4 ? result.push(e) : e;
+    });
+    return result;
+}
+
+console.log(friend(["Ryan", "Kieran", "Jason", "Yous"]));
+console.log(friend(["Ryan", "Kieran", "Mark"]));
