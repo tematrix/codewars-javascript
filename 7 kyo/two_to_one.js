@@ -26,3 +26,15 @@ longest(a, b) -> "abcdefklmopqwxy"
 a = "abcdefghijklmnopqrstuvwxyz"
 longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
 */
+
+function longest(s1, s2) {
+    let t = s1 + s2, a = [];
+    t = t.split('').sort();
+    let set = new Set(t);
+    set.forEach(e => {
+       a.push(e);
+    });
+    return a.join('');    
+}
+
+console.log(longest("xyaabbbccccdefww","xxxxyyyyabklmopq"));
