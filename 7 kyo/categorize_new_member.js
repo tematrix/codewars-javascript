@@ -40,3 +40,13 @@ output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 Входные данные: [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
 Выходные данные: ["Открытый", "Открытый", "Старший", "Открытый", "Открытый", "Старший"]
 */
+
+function openOrSenior(data){
+    let a = [];
+    data.forEach(e => {
+      e[0] >= 55 && e[1] > 7 ? a.push('Senior') : a.push('Open');     
+    });
+    return a;
+}
+
+console.log(openOrSenior([[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]));
