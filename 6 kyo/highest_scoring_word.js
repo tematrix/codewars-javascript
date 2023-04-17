@@ -27,3 +27,29 @@ All letters will be lowercase and all inputs will be valid.
 
 Все буквы будут в нижнем регистре, а все входные данные будут допустимыми.
 */
+
+function high(x){
+    const a = ' abcdefghijklmnopqrstuvwxyz';
+    let h = '', b = [];
+    
+    x = x.toLowerCase().split(' ');
+  
+    for (let e of x) {
+      let c = 0;
+      for (let i of e) {
+        c += a.indexOf(i);
+      }
+      b.push([e,c]);
+    }
+    
+    h = b[0];
+    for (let i = 1; i < b.length; i++) {
+       if (b[i][1] > h[1]) {
+          h = b[i];
+       }
+    }
+ 
+    return h[0]; 
+}
+
+console.log(high('You need to return the highest scoring word as a string.'));
