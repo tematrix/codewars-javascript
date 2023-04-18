@@ -38,3 +38,17 @@ is_prime(1) false
 is_prime(2) true
 is_prime(-1) false
 */
+
+function isPrime(num) {
+    if (num < 2) {return false;}
+    if (num == 2) {return true;}
+    const maxDev = Math.sqrt(num) + 1;
+    for (let i = 2; i < maxDev; i++) {
+       if (num % i == 0) {return false;}
+    }
+    return true;
+}
+
+console.log(isPrime(1));
+console.log(isPrime(2));
+console.log(isPrime(-1));
