@@ -38,3 +38,19 @@ Examples
 "[(])" => False
 "[({})](]" => False
 */
+
+function validBraces(braces){
+    let length = braces.length;
+    braces = braces.split('()').join('').split('[]').join('').split('{}').join('');
+    if (length == braces.length) { 
+       return braces.length == 0 ? true : false; 
+    } else {
+       return validBraces(braces);
+    }
+}
+
+console.log(validBraces('(){}[]'));
+console.log(validBraces('([{}])'));
+console.log(validBraces('(}'));
+console.log(validBraces('[(])'));
+console.log(validBraces('[({})](]'));
