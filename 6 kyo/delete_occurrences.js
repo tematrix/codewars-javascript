@@ -30,3 +30,16 @@ With list [20,37,20,21] and number 1, the result would be [20,37,21].
 и затем берете 3, что приводит к [1,2,3,1,2,3].
 Для списка [20,37,20,21] и числа 1 результатом будет [20,37,21].
 */
+
+function deleteNth(a,n){
+    for (let i = a.length-1; i >= 0; i--) {
+      let e = a[i], s = a.filter(j => j == e);
+      if (s.length > n) {
+        a.splice(i, 1);
+      }
+    }
+    return a;
+}
+
+console.log(deleteNth([1,2,3,1,2,1,2,3], 2));
+console.log(deleteNth([20,37,20,21], 1));
