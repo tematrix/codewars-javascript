@@ -59,3 +59,17 @@ longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abi
 Примечание:
 последовательные строки: следуют одна за другой без прерываний.
 */
+
+function longestConsec(strarr, k) {
+   const n = strarr.length;
+   if (n == 0 || k > n || k <= 0) {return '';}
+   let max = strarr.slice(0, k).join('');
+   for (let j = 1; j < strarr.length; j++) {
+      let e = strarr.slice(j, k + j).join('');
+      if (e.length > max.length) {max = e;}
+   }   
+   return max;
+}
+
+console.log(longestConsec(["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], 2));
+console.log(longestConsec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2));
