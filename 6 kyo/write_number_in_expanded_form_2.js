@@ -18,3 +18,16 @@ expandedForm(70304); // Должно вернуть '70000 + 300 + 4'
 
 Примечание: Все числа будут целыми числами, большими 0.
 */
+
+function expandedForm(num) {
+  num = `${num}`.split(''); let z = '';
+  for (let i = num.length-1; i >= 0; i--) {
+    num[i] = num[i] + z;
+    z += '0';
+  }
+  return num.filter(e => +e > 0).join(' + ');
+}
+
+console.log(expandedForm(12));
+console.log(expandedForm(42));
+console.log(expandedForm(70304));
