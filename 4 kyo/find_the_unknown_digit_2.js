@@ -59,3 +59,41 @@ an int value representing the unknown rune or -1 if no such rune exists.
 Метод принимает строку в качестве параметра, представляющую выражение, и возвращает целочисленное 
 значение, представляющее неизвестную руну или -1, если такой руны не существует.
 */
+
+function solveExpression(exp) {
+    let a = exp.split('=');
+    let f = a[0].match(/^[-]?[\d?]+(?=[*+-])/)[0],
+        s = a[0].match(/(?<=[\d?][*+-]).+$/)[0],
+        o = a[0].match(/(?<=[\d?]+)[*+-]/)[0],
+        r = a[1];    
+    
+    const convert = (arg, e) => {
+        if (arg[0] == '?' && arg[1] !== undefined && e == 0 || 
+        arg[0] == '-' && arg[1] == '?' && e == 0 || arg.indexOf(`${e}`) != -1) {
+            return undefined;
+        }
+        return Number(arg.replace(/[?]/g, `${e}`));
+    };    
+    
+    for (let i = 0; i <= 9; i++) {
+        if (eval(`${convert(f, i)} ${o} ${convert(s, i)}`) === convert(r, i)) {
+            return i;
+        }
+                    
+    }      
+    
+    return -1; 
+  
+}
+
+console.log(solveExpression('1+1=?'));
+console.log(solveExpression('123*45?=5?088'));
+console.log(solveExpression('-5?*-1=5?'));
+console.log(solveExpression('19--45=5?'));
+console.log(solveExpression('??*??=302?'));
+console.log(solveExpression('?*11=??'));
+console.log(solveExpression('??*1=??'));
+console.log(solveExpression('??+??=??'));
+console.log(solveExpression('123?45+?=123?45'));
+console.log(solveExpression('-?56373--9216=-?47157'));
+console.log(solveExpression('?03816-8642?2=3?224'));
