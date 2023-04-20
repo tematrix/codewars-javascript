@@ -11,6 +11,7 @@ but he needs your help to figure out the rest.
 The professor will give you a simple math expression, of the form
 
 [number][op][number]=[number]
+
 He has converted all of the runes he knows into digits. 
 The only operators he knows are addition (+),subtraction(-), and multiplication (*), 
 so those are the only ones that will appear. Each number will be in the range 
@@ -58,3 +59,62 @@ an int value representing the unknown rune or -1 if no such rune exists.
 Метод принимает строку в качестве параметра, представляющую выражение, и возвращает целочисленное 
 значение, представляющее неизвестную руну или -1, если такой руны не существует.
 */
+
+function solveExpression(exp) {
+    let a = exp.split('=');
+     let first = a[0].match(/^[-]?[0-9?]+(?=[*+-])/)[0],
+        second = a[0].match(/(?<=[0-9?][*+-]).+$/)[0],
+        op = a[0].match(/(?<=[0-9?]+)[*+-]/)[0],
+        result = a[1];  
+      
+    const convert = (arg, e) => {
+        if (arg[0] == '?' && arg[1] !== undefined && e == 0 || 
+            arg[0] == '-' && arg[1] == '?' && e == 0 || 
+            arg.indexOf(`${e}`) != -1) {
+            return undefined;
+        }
+        return Number(arg.replace(/[?]/g, `${e}`));
+    };
+      
+    if (op == "*") {
+        for (let i = 0; i <= 9; i++) {
+            if (convert(first, i) * convert(second, i) === convert(result, i)) {                            
+                return i;
+            }
+                      
+        }
+    }
+      
+    if (op == "-") {
+        for (let i = 0; i <= 9; i++) {
+            if (convert(first, i) - convert(second, i) === convert(result, i)) {
+                return i;
+            }
+                      
+        }
+    }
+  
+    if (op == "+") {
+        for (let i = 0; i <= 9; i++) {
+            if (convert(first, i) + convert(second, i) === convert(result, i)) {
+                return i;
+            }
+                      
+        }
+    }    
+      
+    return -1;
+    
+}
+
+console.log(solveExpression('1+1=?'));
+console.log(solveExpression('123*45?=5?088'));
+console.log(solveExpression('-5?*-1=5?'));
+console.log(solveExpression('19--45=5?'));
+console.log(solveExpression('??*??=302?'));
+console.log(solveExpression('?*11=??'));
+console.log(solveExpression('??*1=??'));
+console.log(solveExpression('??+??=??'));
+console.log(solveExpression('123?45+?=123?45'));
+console.log(solveExpression('-?56373--9216=-?47157'));
+console.log(solveExpression('?03816-8642?2=3?224'));
