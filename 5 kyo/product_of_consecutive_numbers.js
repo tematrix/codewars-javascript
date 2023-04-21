@@ -60,3 +60,5 @@ function productFib(prod){
 
 console.log(productFib(233));
 console.log(productFib(15));
+console.log(productFib(35));
+console.log(productFib(40));
