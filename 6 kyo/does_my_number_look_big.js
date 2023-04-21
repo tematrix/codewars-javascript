@@ -45,3 +45,15 @@ only valid positive non-zero integers will be passed into the function.
 Проверка ошибок для текстовых строк или других недопустимых входных данных не требуется, 
 только допустимые положительные ненулевые целые числа будут переданы в функцию.
 */
+
+function narcissistic(v) {
+    let s = String(v).split('');
+    let n = s.length, r = 0;
+    for (let e of s) {
+      r += Number(e)**n;
+    }
+    return r === v;
+}
+
+console.log(narcissistic(153));
+console.log(narcissistic(1652));
