@@ -43,3 +43,24 @@ array = [[1,2,3],
 
 Примечание 2: пустая матрица 0x0 (empty matrix) представлена пустым массивом внутри массива [[]].
 */
+
+function snail(arr) {
+    let res = [];      
+    if (arr.length <= 1) {        
+        return arr[0];
+    } else {
+        for (let i = 0; i < arr[0].length; i++) {
+            res.push(arr[0][i]);
+        }
+        arr.shift();
+        for (let i = 0; i < arr.length; i++) {
+            res.push(arr[i][arr[i].length-1]);
+            arr[i].pop();
+            arr[i].reverse();           
+        }
+        arr.reverse();
+        return [...res, ...snail(arr)];
+    }
+}
+
+console.log(snail([[1,2,3],[4,5,6],[7,8,9]]));
