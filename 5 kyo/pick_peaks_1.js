@@ -1,0 +1,56 @@
+/*
+DESCRIPTION:
+In this kata, you will write a function that returns the positions and the values 
+of the "peaks" (or local maxima) of a numeric array.
+
+For example, the array arr = [0, 1, 2, 5, 1, 0] has a peak at position 3 with a value 
+of 5 (since arr[3] equals 5).
+
+The output will be returned as an object with two properties: pos and peaks. 
+Both of these properties should be arrays. If there is no peak in the given array, 
+then the output should be {pos: [], peaks: []}.
+
+Example: pickPeaks([3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 3]) should 
+return {pos: [3, 7], peaks: [6, 3]} (or equivalent in other languages)
+
+All input arrays will be valid integer arrays (although it could still be empty), 
+so you won't need to validate the input.
+
+The first and last elements of the array will not be considered as peaks 
+(in the context of a mathematical function, we don't know what is after and before 
+and therefore, we don't know if it is a peak or not).
+
+Also, beware of plateaus !!! [1, 2, 2, 2, 1] has a peak while [1, 2, 2, 2, 3] 
+and [1, 2, 2, 2, 2] do not. In case of a plateau-peak, please only return the position 
+and value of the beginning of the plateau. 
+
+For example: pickPeaks([1, 2, 2, 2, 1]) returns {pos: [1], peaks: [2]} (or equivalent in other languages)
+
+
+ПЕРЕВОД:
+В этом ката вы напишете функцию, которая возвращает позиции и значения "пиков" 
+(или локальных максимумов) числового массива.
+
+Например, массив arr = [0, 1, 2, 5, 1, 0] имеет пик 
+в позиции 3 со значением 5 (так как arr[3] равно 5).
+
+Вывод будет представлен в виде объекта с двумя свойствами: pos и peaks. 
+Оба этих свойства должны быть массивами. Если в данном массиве нет пика, 
+то вывод должен быть {pos: [], peaks: []}.
+
+Пример: pickPeaks([3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 3]) должен 
+вернуть {pos: [3, 7], peaks: [6, 3]} (или эквивалент в других языках программирования)
+
+Все входные массивы будут допустимыми целочисленными массивами (хотя они могут быть пустыми), 
+поэтому вам не нужно проверять входные данные.
+
+Первый и последний элементы массива не будут рассматриваться как пики 
+(в контексте математической функции мы не знаем, что находится до и после и, 
+следовательно, не знаем, является ли это пиком или нет).
+
+Также остерегайтесь плато !!! [1, 2, 2, 2, 1] имеет пик, а [1, 2, 2, 2, 3] и [1, 2, 2, 2, 2] - нет. 
+В случае плато-пика верните только позицию и значение начала плато.
+
+Например: pickPeaks([1, 2, 2, 2, 1]) возвращает {pos: [1], peaks: [2]} 
+(или эквивалент в других языках программирования).
+*/
