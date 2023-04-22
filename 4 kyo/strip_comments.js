@@ -44,3 +44,21 @@ bananas
 var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])
 // результат должен быть равен "apples, pears\ngrapes\nbananas"
 */
+
+function solution(input, markers) {
+    let lines = input.split('\n');     
+      for (let e of markers) {
+          let rE = new RegExp(`^.+(?=[${e}])`, `g`);
+          for (let i = 0; i < lines.length; i++) {
+              if (rE.test(lines[i])) {
+                  lines[i] = lines[i].match(rE)[0];
+                  if (lines[i][lines[i].length-1] == ' ') {
+                      lines[i] = lines[i].slice(0, lines[i].length-1);
+                  }
+              }
+          }            
+      }
+      return lines.join('\n');  
+}
+
+console.log(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"]));
