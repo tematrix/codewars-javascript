@@ -54,3 +54,51 @@ For example: pickPeaks([1, 2, 2, 2, 1]) returns {pos: [1], peaks: [2]} (or equiv
 Например: pickPeaks([1, 2, 2, 2, 1]) возвращает {pos: [1], peaks: [2]} 
 (или эквивалент в других языках программирования).
 */
+
+function pickPeaks(arr){
+      if (arr.length <= 1) {
+          return {pos: [],peaks: []};
+      }        
+      const result = {pos: [],peaks: []},    
+      search = (a) => {
+          if (a.length <= 1) {
+              return result;
+          } else {            
+              let i = 0, plato = false, platoPos;
+              while (a[i] >= a[i+1]) {
+                  i++;
+              }
+              if (i == a.length-1) {
+                  return search([]);
+              }
+              while (a[i] <= a[i+1]) {
+                  if (a[i] == a[i+1] && (plato === false || plato < a[i])) {
+                      plato = a[i];
+                      platoPos = i;
+                  }
+                  i++;
+              }
+              if (i == a.length-1) {
+                  return search([]);
+              }            
+              if (a[i] === plato) {                
+                  result.pos.push(platoPos);
+                  result.peaks.push(plato);
+              } else {                
+                  result.pos.push(i);
+                  result.peaks.push(a[i]);
+              }
+              let sub = [];
+              for (let n = 0; n < i+1; n++) {
+                  sub.push(a[i]);
+              }
+              a.splice(0, i+1, ...sub);            
+              return search(a);
+          }
+      };
+      return search(arr);
+}
+
+console.log(pickPeaks([0, 1, 2, 5, 1, 0]));
+console.log(pickPeaks([3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 3]));
+console.log(pickPeaks([1, 2, 2, 2, 1]));
