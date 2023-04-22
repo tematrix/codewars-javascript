@@ -28,3 +28,40 @@ If the digits can't be rearranged to form a bigger number, return -1 (or nil in 
 111 ==> -1
 531 ==> -1
 */
+
+function nextBigger(n){
+    let s = String(n).split('');
+    let l = [], r = [], e = false, t = '';
+
+    for (let i = s.length-1; i > 0; i--) {
+        if (s[i] > s[i-1]) {
+            e = s[i-1];            
+            l = s.slice(0, i-1);
+            r = s.slice(i, s.length);
+            break;                        
+        }
+    }
+
+    if (!e) {
+        return -1;
+    }
+
+    for (let i = r.length-1; i >= 0; i--) {
+        if (e < r[i]) {
+            t = r[i];
+            r.splice(i, 1, e);
+            break;            
+        }
+    }
+
+    r.sort((a,b) => a-b);
+
+    return Number([...l, t ,...r].join(''));
+}
+
+console.log(nextBigger(12));
+console.log(nextBigger(513));
+console.log(nextBigger(2017));
+console.log(nextBigger(9));
+console.log(nextBigger(111));
+console.log(nextBigger(531));
