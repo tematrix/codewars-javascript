@@ -48,3 +48,36 @@ helper.pageIndex(2); // должно быть равно 0
 helper.pageIndex(20); // должно быть равно -1
 helper.pageIndex(-10); // должно быть равно -1
 */
+
+function PaginationHelper(p, n) {   
+    this.p = p;
+    this.n = n;
+    this.pagination = () => {
+        let pages = [], a = [...p];
+        while (a.length >= 1) {
+            pages.push(a.splice(0, n));
+        }        
+        return pages;
+    };
+    this.pageCount = () => {
+        return this.pagination().length;
+    };
+    this.itemCount = () => {
+        return this.p.length;
+    };
+    this.pageItemCount = (c) => {
+        return this.pagination()[c] ? this.pagination()[c].length : -1;
+    };
+    this.pageIndex = (i) => {
+        return i < this.p.length && i >= 0 ? Math.floor(i/this.n) : -1;
+    };
+}
+
+let help = new PaginationHelper([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], 10);
+
+console.log(help.pagination());
+console.log(help.pageCount());
+console.log(help.itemCount());
+console.log(help.pageItemCount(1));
+console.log(help.pageIndex(5));
