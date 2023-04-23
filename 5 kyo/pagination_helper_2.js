@@ -48,3 +48,38 @@ helper.pageIndex(2); // должно быть равно 0
 helper.pageIndex(20); // должно быть равно -1
 helper.pageIndex(-10); // должно быть равно -1
 */
+
+class PaginationHelper {
+	constructor(collection, itemsPerPage) {
+        this.c = collection;
+        this.i = itemsPerPage;
+    }
+    pagination() {
+        let p = [], a = [...this.c];
+        while (a.length >= 1) {
+            p.push(a.splice(0, this.i));
+        }
+        return p;
+    }
+    itemCount() {
+        return this.c.length;
+    }
+    pageCount() {
+        return this.pagination().length;
+    }
+    pageItemCount(e) {
+        return this.pagination()[e] ? this.pagination()[e].length : -1;
+    }
+    pageIndex(e) {
+        return e < this.c.length && e >= 0 ? Math.floor(e/this.i) : -1;
+    }
+}
+
+let help = new PaginationHelper([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], 10);
+
+console.log(help.pagination());
+console.log(help.pageCount());
+console.log(help.itemCount());
+console.log(help.pageItemCount(1));
+console.log(help.pageIndex(5));
