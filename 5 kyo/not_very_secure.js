@@ -21,3 +21,12 @@ No whitespaces / underscore
 Допустимы заглавные и строчные буквы латинского алфавита и цифры от 0 до 9
 Не допускаются пробелы и символ подчеркивания
 */
+
+function alphanumeric(string){
+    return string.length < 1 || /[_]+/g.test(string) ? false : !/\W+/g.test(string);
+}
+
+console.log(alphanumeric("hello123"));
+console.log(alphanumeric("hello world"));
+console.log(alphanumeric("hello_world"));
+console.log(alphanumeric(""));
