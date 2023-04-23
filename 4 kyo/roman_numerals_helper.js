@@ -66,3 +66,65 @@ fromRoman:
 "XL" -> 40
 "I" -> 1
 */
+
+class RomanNumerals {
+  static toRoman(Number) {
+    if (Number < 1 || Number >= 4000) {
+        return false;
+    } else {
+        let o = ['I', 'V', 'X'], t = ['X', 'L', 'C'], h = ['C', 'D', 'M'], m = ['M'];
+        let num = String(Number);
+        switch(num.length) {
+            case 1: return c(num[0], o);             
+            case 2: return c(num[0], t) + c(num[1], o);
+            case 3: return c(num[0], h) + c(num[1], t) + c(num[2], o);
+            case 4: return c(num[0], m) + c(num[1], h) + c(num[2], t) + c(num[3], o);
+        }
+    }    
+  }
+
+  static fromRoman(Number) {    
+    let o = ['I', 'V', 'X'], t = ['X', 'L', 'C'], h = ['C', 'D', 'M'], m = ['M'];
+    let mR = Number.match(/^[M]+/),
+        hR = Number.match(/(?<![X])[CD]+M?/),
+        tR = Number.match(/(?<![I])[LX]+C?/),
+        oR = Number.match(/[IV]+X?$/);       
+    return  u(mR, m)*1000 + u(hR, h)*100 + u(tR, t)*10 + u(oR, o);
+  }
+}
+
+function c(n, a) {
+    let r = [];
+    switch(n) {
+        case '1': r.push(a[0]); break;
+        case '2': r.push(a[0]+a[0]); break;
+        case '3': r.push(a[0]+a[0]+a[0]); break;
+        case '4': r.push(a[0]+a[1]); break;
+        case '5': r.push(a[1]); break;
+        case '6': r.push(a[1]+a[0]); break;
+        case '7': r.push(a[1]+a[0]+a[0]); break;
+        case '8': r.push(a[1]+a[0]+a[0]+a[0]); break;
+        case '9': r.push(a[0]+a[2]); break;
+        default: r.push('');
+    }
+    return r.join('');
+}
+
+function u(n, a) {
+    if (n) {        
+        switch(n[0]) {
+            case a[0]: return 1;
+            case a[0]+a[0]: return 2;
+            case a[0]+a[0]+a[0]: return 3;
+            case a[0]+a[1]: return 4;
+            case a[1]: return 5;
+            case a[1]+a[0]: return 6;
+            case a[1]+a[0]+a[0]: return 7;
+            case a[1]+a[0]+a[0]+a[0]: return 8;
+            case a[0]+a[2]: return 9;
+            default: return 0;
+        }
+    } else {
+        return 0;
+    }
+}
