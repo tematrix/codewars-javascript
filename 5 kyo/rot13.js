@@ -17,3 +17,26 @@ ROT13 - это простой шифр подстановки букв, кото
 Если в строке присутствуют цифры или специальные символы, они должны быть возвращены без изменений. 
 Только буквы латинского/английского алфавита должны быть сдвинуты, как в оригинальной реализации ROT13.
 */
+
+function rot13(message){
+    const lowerAlpha = 'abcdefghijklmnopqrstuvwxyz'.split(''),
+          upperAlpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
+          rot13 = {};
+    function makeRot13(alpha) {
+        for (let i = 0; i < 13; i++) {
+            rot13[alpha[i]] = alpha[i+13];
+            rot13[alpha[i+13]] = alpha[i];  
+        }
+    }
+    makeRot13(lowerAlpha); makeRot13(upperAlpha);
+
+    let text = message.split('');
+    for (let i = 0; i < text.length; i++) {
+        if (rot13.hasOwnProperty(text[i])) {
+            text[i] = rot13[text[i]];
+        }
+    }
+    return text.join('');
+}
+
+console.log(rot13('Hello world'));
