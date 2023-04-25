@@ -55,3 +55,7 @@ decodeMorse('.... . -.--   .--- ..- -.. .')
 decodeMorse('.... . -.-- .--- ..- -.. .')
 // должно вернуть "HEY JUDE"
 */
+
+function decodeMorse(morseCode) {
+    return morseCode.trim().split('   ').map(w => w.split(' ').map(l => MORSE_CODE[l]).join('')).join(' ');
+}
