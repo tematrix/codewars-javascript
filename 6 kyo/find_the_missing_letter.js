@@ -27,3 +27,18 @@ Example:
 ['O','Q','R','S'] -> 'P'
 (Используйте английский алфавит с 26 буквами!)
 */
+
+function findMissingLetter(array) {
+    const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+    let e = 0;
+    for (let i = 0; i < alpha.length; i++) {
+      if (alpha[i] == array[0]) {e = i; break;}
+    }
+    for (let i = 0; i < array.length; i++) {
+      if(array[i] !== alpha[i+e]) {return alpha[i+e];}
+    }
+    return 'There is no missing letter';
+}
+
+console.log(findMissingLetter(['a','b','c','d','f']));
+console.log(findMissingLetter(['O','Q','R','S']));
