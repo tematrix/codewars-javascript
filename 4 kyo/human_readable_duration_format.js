@@ -78,3 +78,39 @@ than any valid more significant unit of time.
 Формально продолжительность, указанная для компонента, не должна быть больше любой
 допустимой более значимой единицы времени.
 */
+
+function formatDuration (s) {
+    let a = [], r = '';
+    if (s == 0) {return 'now';}
+    if (s < 60) {
+        return label(s, `second`);
+    } else {
+        if (s >= 32850000) {a.push(label(Math.floor(s / 31536000), `year`)); s = s % 31536000;}
+        if (s >= 86400) {a.push(label(Math.floor(s / 86400), `day`)); s = s % 86400;}
+        if (s >= 3600) {a.push(label(Math.floor(s / 3600), `hour`)); s = s % 3600;}
+        if (s >= 60) {a.push(label(Math.floor(s / 60), `minute`)); s = s % 60;}
+        if (s > 0) {a.push(label(s, `second`));}
+        if (a.length == 1) {
+            r = a[0];
+        } else {
+            for (let i = 0; i < a.length; i++) {
+                if (i == a.length-1) {
+                    r += `and ${a[i]}`;
+                } else if (i == a.length-2) {
+                    r += `${a[i]} `;
+                } else {
+                    r += `${a[i]}, `;
+                }
+            }              
+            
+        }
+        return r;
+    }
+}
+ 
+function label(n, name) {
+    if (n == 0) {return '';}
+    return n == 1 ? `${n} ${name}` : `${n} ${name}s`;
+}
+
+console.log(formatDuration(100000));
