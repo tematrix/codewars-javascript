@@ -19,3 +19,15 @@ findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
 
 Тесты содержат очень большие массивы, поэтому учитывайте производительность.
 */
+
+function findUniq(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        if (i == arr.length-1) {return arr[arr.length-1];}
+        if (arr[i] != arr[i-1]) {
+            return arr[i] != arr[i+1] ? arr[i] : arr[i-1];
+        }
+    }
+}
+
+console.log(findUniq([ 1, 1, 1, 2, 1, 1 ]));
+console.log(findUniq([ 0, 0, 0.55, 0, 0 ]));
