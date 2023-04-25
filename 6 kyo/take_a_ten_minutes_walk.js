@@ -32,3 +32,22 @@ letters ('n', 's', 'e', or 'w' only). It will never give you an empty array
 букв направлений ('n', 's', 'e' или 'w' только). Он никогда не даст вам пустой массив
 (это не прогулка, это стояние на месте!).
 */
+
+function isValidWalk(walk) {  
+    if (walk.length !== 10) {
+      return false;
+    } else {
+      let n = 0, s = 0, e = 0, w = 0;
+      for (let i = 0; i < walk.length; i++) {
+        switch(walk[i]) {
+            case 'n': n++; break;
+            case 's': s++; break;
+            case 'e': e++; break;
+            case 'w': w++; break;
+        }      
+      }
+      return n === s && e === w;
+    }
+}
+
+console.log(isValidWalk(['n', 's', 'w', 'e', 'n', 's', 'w', 'e', 'n', 's']));
