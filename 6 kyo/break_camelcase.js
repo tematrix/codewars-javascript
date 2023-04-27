@@ -20,3 +20,9 @@ Example
 в которой каждое новое слово начинается с заглавной буквы, а все слова разделены пробелами. 
 Если исходная строка пуста, функция должна вернуть пустую строку.
 */
+
+const solution = (s) => s.replace(/([a-z])([A-Z])/g, '$1 $2');
+
+console.log(solution("camelCasing"));
+console.log(solution("identifier"));
+console.log(solution(""));
