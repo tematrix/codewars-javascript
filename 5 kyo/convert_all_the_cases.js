@@ -49,3 +49,38 @@ js> changeCase("", "camel")
 хотя ей будут передаваться только строки. Кроме того, все допустимые идентификаторы 
 будут записаны в нижнем регистре, за исключением необходимых мест, где используется "camelCase".
 */
+
+function changeCase(t, c){
+    if (c !== "snake" && c !== 'camel' && c !== 'kebab') {return undefined;}
+    if (t.includes('-') && t.includes('_')) {return undefined;}
+    if (t.includes('-') && /[A-Z]/.test(t)) {return undefined;}
+    if (t.includes('_') && /[A-Z]/.test(t)) {return undefined;}
+
+    if (t.includes('-') && c === 'snake') {return t.split('-').join('_');}
+    if (t.includes('_') && c === 'kebab') {return t.split('_').join('-');}
+    
+    if (c === 'camel' && t != '') {
+        let a = t.split('');
+        a[0] = a[0].toLowerCase();
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] === '-' || a[i] === '_') {
+                a[i+1] = a[i+1].toUpperCase();
+                a.splice(i, 1);
+            }
+        }
+        return a.join('');
+    }
+
+    if (c === 'snake') {return t.replace(/([A-Z])/g, '_$&').toLowerCase();}
+    if (c === 'kebab') {return t.replace(/([A-Z])/g, '-$&').toLowerCase();}
+
+    return t;
+}
+
+console.log(changeCase("snakeCase", "snake"));
+console.log(changeCase("some-lisp-name", "camel"));
+console.log(changeCase("map_to_all", "kebab"));
+console.log(changeCase("doHTMLRequest", "kebab"));
+console.log(changeCase("invalid-inPut_bad", "kebab"));
+console.log(changeCase("valid-input", "huh???"));
+console.log(changeCase("", "camel"));
