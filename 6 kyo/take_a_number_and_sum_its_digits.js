@@ -30,3 +30,21 @@ If there are no numbers of this kind in the range [a,b] the function should outp
 
 90, 100 --> []
 */
+
+function sumDigPow(a, b) {
+    let result = [];
+    for (let i = a; i <= b; i++) {
+      let s = String(i).split(''), l = 0;
+      for (let j = 0; j < s.length; j++) {
+        l += Number(s[j])**(j+1); 
+      }
+      if (i === l) {
+        result.push(i);
+      }
+    }
+    return result;
+}
+
+console.log(sumDigPow(1, 10));
+console.log(sumDigPow(1, 100));
+console.log(sumDigPow(90, 100));
