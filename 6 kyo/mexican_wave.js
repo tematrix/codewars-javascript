@@ -25,3 +25,15 @@ wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
 Пример:
 wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
 */
+
+function wave(str){
+    let r = [];
+    for (let i = 0; i < str.length; i++) {
+      if(str[i] !== ' ') {
+        r.push(str.slice(0,i)+str[i].toUpperCase()+str.slice(i+1));
+      }
+    }  
+    return r;
+}
+
+console.log(wave("hello"));
