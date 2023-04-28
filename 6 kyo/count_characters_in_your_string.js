@@ -11,3 +11,17 @@ What if the string is empty? Then the result should be empty object literal, {}.
 
 Что, если строка пуста? Тогда результатом должен быть пустой объект, {} (пустой литерал объекта).
 */
+
+function count(string) {
+    let result = {};
+    for (let e of string) {
+      if (result[e]) {
+        result[e]++;
+      } else {
+        result[e] = 1;
+      }
+    }
+    return result;
+}
+
+console.log(count('Hello'));
