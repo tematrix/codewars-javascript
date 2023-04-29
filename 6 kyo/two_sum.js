@@ -32,3 +32,16 @@ twoSum([1, 2, 3], 4) // returns [0, 2] or [2, 0]
 Пример вызова функции:
 twoSum([1, 2, 3], 4) // должна вернуть [0, 2] или [2, 0]
 */
+
+function twoSum(numbers, target) {
+    for (let i = 0; i < numbers.length; i++) {
+      for (let j = 0; j < numbers.length; j++) {
+        if(numbers[i] + numbers[j] === target && i !== j) {
+          return [i, j];
+        }
+      }
+    }
+    return [];
+}
+
+console.log(twoSum([1, 2, 3], 4));
