@@ -25,3 +25,39 @@ solution(1000); // should return 'M'
 Пример:
 solution(1000); // должна вернуть 'M'
 */
+
+function solution(number){
+    if (number < 1 || number >= 4000) {
+        return false;
+    } else {
+        let o = 'IVX', t = 'XLC', h = 'CDM', m = 'M';
+        let n = String(number);
+        switch(n.length) {
+            case 1: return c(n[0],o);             
+            case 2: return c(n[0],t) + c(n[1],o);
+            case 3: return c(n[0],h) + c(n[1],t) + c(n[2],o);
+            case 4: return c(n[0],m) + c(n[1],h) + c(n[2],t) + c(n[3],o);
+        }
+    }
+  
+    function c(n, a) {
+        let r = [];
+        switch(n) {
+            case '1': r.push(a[0]); break;
+            case '2': r.push(a[0]+a[0]); break;
+            case '3': r.push(a[0]+a[0]+a[0]); break;
+            case '4': r.push(a[0]+a[1]); break;
+            case '5': r.push(a[1]); break;
+            case '6': r.push(a[1]+a[0]); break;
+            case '7': r.push(a[1]+a[0]+a[0]); break;
+            case '8': r.push(a[1]+a[0]+a[0]+a[0]); break;
+            case '9': r.push(a[0]+a[2]); break;
+            default: r.push('');
+        }
+        return r.join('');
+    }
+}
+
+console.log(solution(1000));
+console.log(solution(1990));
+console.log(solution(2008));
