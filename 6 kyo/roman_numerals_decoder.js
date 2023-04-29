@@ -24,3 +24,35 @@ solution('XXI'); // should return 21
 Пример:
 solution('XXI'); // должна вернуть 21
 */
+
+function solution (roman) {
+    let o = 'IVX', t = 'XLC', h = 'CDM', m = 'M';
+    let mR = roman.match(/^[M]+/),
+        hR = roman.match(/(?<![X])[CD]+M?/),
+        tR = roman.match(/(?<![I])[LX]+C?/),
+        oR = roman.match(/[IV]+X?$/);
+    return  u(mR, m)*1000 + u(hR, h)*100 + u(tR, t)*10 + u(oR, o);
+}
+
+function u(n, a) {
+    if (n) {        
+        switch(n[0]) {
+            case a[0]: return 1;
+            case a[0]+a[0]: return 2;
+            case a[0]+a[0]+a[0]: return 3;
+            case a[0]+a[1]: return 4;
+            case a[1]: return 5;
+            case a[1]+a[0]: return 6;
+            case a[1]+a[0]+a[0]: return 7;
+            case a[1]+a[0]+a[0]+a[0]: return 8;
+            case a[0]+a[2]: return 9;
+            default: return 0;
+        }
+    } else {
+        return 0;
+    }
+}
+
+console.log(solution('XXI'));
+console.log(solution('MCMXC'));
+console.log(solution('MDCLXVI'));
