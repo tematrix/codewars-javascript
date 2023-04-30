@@ -32,5 +32,46 @@ encrypt("01234", 3) => "13024" -> "32104" -> "20314"
 
 Вместе с функцией шифрования вы также должны реализовать функцию дешифрования, которая обратит этот процесс.
 
-Если строка S является пустым значением или целое число N не является положительным, вернуть первый аргумент без изменений.
+Если строка S является пустым значением или целое число N не является положительным, 
+вернуть первый аргумент без изменений.
 */
+
+function encrypt(text, n) {
+    if (n <= 0 || text == '' || text == null) {return text;}
+    for (let i = 1; i <= n; i++) {
+      let o = '', e = '';
+      for (let j = 0; j < text.length; j++) {
+        if (j % 2 === 0) {
+          e += text[j];
+        } else {
+          o += text[j];
+        }
+      }
+      text = o + e;
+    }
+    return text;
+}
+  
+  function decrypt(encryptedText, n) {
+    if (n <= 0 || encryptedText == '' || encryptedText == null) {return encryptedText;}
+    let l = encryptedText.length, m = Math.floor(l / 2);
+    for (let i = 1; i <= n; i++) {
+      let d = '';
+      for (let j = 0; j < m; j++) {
+        d += encryptedText[m + j] + encryptedText[j];
+      }
+      if (l % 2 === 1) {
+        d += encryptedText[l - 1];
+      }
+      encryptedText = d;
+    }
+    return encryptedText;  
+}
+
+console.log(encrypt("012345", 1));
+console.log(encrypt("012345", 2));
+console.log(encrypt("012345", 3));
+
+console.log(encrypt("01234", 1));
+console.log(encrypt("01234", 2));
+console.log(encrypt("01234", 3));
