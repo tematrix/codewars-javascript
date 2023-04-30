@@ -16,3 +16,15 @@ For instance:
 "hello case".camelCase() => HelloCase
 "camel case word".camelCase() => CamelCaseWord
 */
+
+String.prototype.camelCase = function() {
+    if (this == '') {return '';}
+    let a = this.split(/\W/), r = [];
+    for (let e of a) {
+      r.push(e[0].toUpperCase() + e.slice(1));
+    }
+    return r.join('');
+};
+
+console.log("hello case".camelCase());
+console.log("camel case word".camelCase());
