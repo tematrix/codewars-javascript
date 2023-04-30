@@ -28,3 +28,27 @@ toWeirdCase( "Weird string case" );//=> returns "WeIrD StRiNg CaSe"
 toWeirdCase( "String" );//=> возвращает "StRiNg"
 toWeirdCase( "Weird string case" );//=> возвращает "WeIrD StRiNg CaSe"
 */
+
+function toWeirdCase(string){
+    let a, p = [];
+    if (/\s/.test(string)) {    
+      a = string.split(' ');
+      for (let e of a) {
+        let r = [];
+        for (let i = 0; i < e.length; i++) {
+          i % 2 == 0 ? r.push(e[i].toUpperCase()) : r.push(e[i]);
+        }
+        p.push(r.join(''));
+      }    
+      return p.join(' ');
+    } else {
+      a = string.split('');
+      for (let i = 0; i < a.length; i++) {
+        i % 2 == 0 ? p.push(a[i].toUpperCase()) : p.push(a[i]);
+      }
+      return p.join('');
+    }
+}
+
+console.log(toWeirdCase("String"));
+console.log(toWeirdCase("Weird string case"));
