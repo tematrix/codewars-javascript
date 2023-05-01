@@ -32,3 +32,28 @@ LCS( "abcdef" , "abc" ) => возвращает "abc"
 LCS( "abcdef" , "acf" ) => возвращает "acf"
 LCS( "132535365" , "123456789" ) => возвращает "12356"
 */
+
+function LCS(x, y) {  
+    let result = [], f, s;
+    
+    if (x.length >= y.length) {
+      f = x; s = y;
+    } else {
+      f = y; s = x;
+    }
+    
+    for (let i = 0; i < s.length; i++) {
+      for (let j = i; j < f.length; j++) {
+        if (f[j] === s[i]) {
+          result.push(s[i]);
+          break;
+        }
+      }
+    }
+    
+    return result.length === 0 ? "" : result.join('');
+}
+
+console.log(LCS("abcdef" , "abc"));
+console.log(LCS("abcdef" , "acf"));
+console.log(LCS("132535365" , "123456789"));
