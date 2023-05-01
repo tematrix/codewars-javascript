@@ -36,3 +36,23 @@ You may assume that the board passed in is valid in the context of a game of Tic
 0, если это ничья.
 Можно предположить, что доска, переданная в функцию, является корректной в контексте игры в крестики-нолики.
 */
+
+function isSolved(board) {
+    const check = (b, a) => {
+      if (b[0].every(e => e === a) ||
+          b[1].every(e => e === a) ||
+          b[2].every(e => e === a) ||
+          b[0][0] === a && b[1][0] === a && b[2][0] === a ||
+          b[0][1] === a && b[1][1] === a && b[2][1] === a ||
+          b[0][2] === a && b[1][2] === a && b[2][2] === a ||
+          b[0][0] === a && b[1][1] === a && b[2][2] === a ||
+          b[0][2] === a && b[1][1] === a && b[2][0] === a) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+    return check(board, 1) ? 1 : check(board, 2) ? 2 : board.some(e => e.includes(0)) ? -1 : 0;  
+}
+
+console.log(isSolved([[0, 0, 1],[0, 1, 2],[2, 1, 0]]));
