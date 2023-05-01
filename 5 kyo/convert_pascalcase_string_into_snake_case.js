@@ -20,3 +20,12 @@ Examples
 "App7Test" --> "app7_test"
 1 --> "1"
 */
+
+function toUnderscore(string) {
+    return typeof(string) === 'number' ? String(string) : string.replace(/(?<!^)[A-Z]/g, '_$&').toLowerCase(); 
+}
+
+console.log(toUnderscore("TestController"));
+console.log(toUnderscore("MoviesAndBooks"));
+console.log(toUnderscore("App7Test"));
+console.log(toUnderscore(1));
