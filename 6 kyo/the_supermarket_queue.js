@@ -56,3 +56,20 @@ queueTime([10,2,3,3], 2)
 queueTime([2,3,10], 2)
 // должно вернуть 12
 */
+
+function queueTime(customers, n) {
+    if (!customers || !n) {return 0;}
+    let a = [];
+    for (let i = 0; i < n; i++) {
+      a[i] = 0;
+    }
+    for (let e of customers) {
+      let next = a.indexOf(Math.min(...a));
+      a[next] += e;
+    }
+    return Math.max(...a);
+}
+
+console.log(queueTime([5,3,4], 1));
+console.log(queueTime([10,2,3,3], 2));
+console.log(queueTime([2,3,10], 2));
