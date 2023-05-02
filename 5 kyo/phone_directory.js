@@ -55,3 +55,28 @@ phone(s, "1-541-754-3010") должен вернуть "Phone => 1-541-754-3010,
 Может произойти так, что для номера телефона num есть много людей, тогда вернуть: "Error => Too many people: num". 
 Или может случиться так, что номер num отсутствует в телефонной книге, в этом случае вернуть: "Error => Not found: num".
 */
+
+function phone(str, num) {
+    let list = str.split(/\n/), line = '', count = 0, name = '', address = '';
+    for (let e of list) {
+      if (e.includes(num)) {
+        line = e;
+        count++;
+      }
+    }
+  
+    if (count === 0) {return `Error => Not found: ${num}`;}
+    if (count > 1) {return `Error => Too many people: ${num}`;}
+    
+    name = line.match(/<(.+)>/)[1];
+    let a = line.split(name).join('').split(num).join('');
+    let b = a.replace(/_/g, ' ');
+    let c = b.replace(/[^a-zA-Z0-9\s.-]/g, '').trim();
+    address = c.replace(/\s{2,}/g, ' ');
+    
+    return `Phone => ${num}, Name => ${name}, Address => ${address}`;
+}
+
+console.log(phone("/+1-541-754-3010 156 Alphand_St. <J Steeve>\n", "+1-541-754-3010"));
+console.log(phone("133, Green, Rd. <E Kustur> NY-56423; +1-541-914-3010!\n", "+1-541-914-3010"));
+console.log(phone("<Anastasia> +48-421-674-8974 Via Quirinal Roma\n", "+48-421-674-8974"));
