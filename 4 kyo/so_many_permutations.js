@@ -42,3 +42,22 @@ Note: The order of the permutations doesn't matter.
 
 Примечание: порядок перестановок не имеет значения.
 */
+
+function permutations(string) {
+    if (string.length === 1) {return [string];}
+    let r = [];
+    for (let i = 0; i < string.length; i++) {
+      let l = string[i],
+          a = string.slice(0,i) + string.slice(i+1),
+          p = permutations(a);
+      for (let j = 0; j < p.length; j++) {
+        r.push(l + p[j]);
+      }
+    }
+      return [...new Set(r)].sort();
+}
+
+console.log(permutations('a'));
+console.log(permutations('ab'));
+console.log(permutations('abc'));
+console.log(permutations('aabb'));
