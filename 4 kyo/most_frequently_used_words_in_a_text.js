@@ -57,3 +57,39 @@ top_3_words(" //wont won't won't")
 
 => ["won't", "wont"]
 */
+
+function topThreeWords(text) {
+    let mid = text.replace(/[.,\-!;:"_\\\/]/g, '').toLowerCase().trim(),
+        set = mid.replace(/\s{2,}|\n/g, ' ').split(' ');
+    let obj = {};
+    
+    for (let e of set) {
+      if (obj.hasOwnProperty(e)) {
+        obj[e]++;
+      } else {
+        obj[e] = 1;
+      }
+    }
+    
+    let arr = Object.entries(obj);
+    
+    arr.sort(function(a,b) {
+      if (a[1] > b[1]) {return -1;}
+      if (a[1] < b[1]) {return 1;}
+      if (a[1] == b[1]) {return 0;}
+    });
+    
+    if (arr.length > 2) {
+      return [arr[0][0], arr[1][0], arr[2][0]];
+    } else if (arr.length == 2) {
+      return [arr[0][0], arr[1][0]];
+    } else if (arr.length == 1 && /[a-z]+/i.test(arr[0][0])) {
+      return [arr[0][0]];
+    } else {
+      return [];
+    }
+}
+
+console.log(topThreeWords("In a village of La Mancha, the name of which I have no desire to call to mind, there lived not long since one of those gentlemen that keep a lance in the lance-rack, an old buckler, a lean hack, and a greyhound for coursing. An olla of rather more beef than mutton, a salad on most nights, scraps on Saturdays, lentils on Fridays, and a pigeon or so extra on Sundays, made away with three-quarters of his income."));
+console.log(topThreeWords("e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e"));
+console.log(topThreeWords(" //wont won't won't"));
