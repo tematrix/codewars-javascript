@@ -32,3 +32,19 @@ Example: (input --> output)
 "ATTGC" --> "TAACG"
 "GTAT" --> "CATA"
 */
+
+function DNAStrand(dna){
+    let a = dna.split('');
+    for (let i = 0; i < a.length; i++) {
+      switch(a[i]) {
+          case 'A': a[i] = 'T'; break;
+          case 'T': a[i] = 'A'; break;
+          case 'G': a[i] = 'C'; break;
+          case 'C': a[i] = 'G'; break;
+      }
+    }
+    return a.join('');
+}
+
+console.log(DNAStrand("ATTGC"));
+console.log(DNAStrand("GTAT"));
