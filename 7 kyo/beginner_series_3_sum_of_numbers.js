@@ -33,3 +33,24 @@ Your function should only return a number, not the explanation about how you get
 
 Ваша функция должна возвращать только число, а не объяснение, как вы получили это число.
 */
+
+function getSum(a, b) {
+    let s = 0;
+    if (a <= b) {    
+      for (let i = a; i <= b; i++) {
+        s += i;
+      }
+    } else {
+      for (let i = b; i <= a; i++) {
+        s += i;
+      }
+    }
+    return s;
+}
+
+console.log(getSum(1, 0));
+console.log(getSum(1, 2));
+console.log(getSum(0, 1));
+console.log(getSum(1, 1));
+console.log(getSum(-1, 0));
+console.log(getSum(-1, 2));
