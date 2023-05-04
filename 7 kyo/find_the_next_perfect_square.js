@@ -30,3 +30,15 @@ Examples:(Input --> Output)
 625 --> 676
 114 --> -1, так как 114 не является целым квадратом.
 */
+
+function findNextSquare(sq) {
+    if (Math.sqrt(sq) !== Math.round(Math.sqrt(sq))) {
+      return -1;
+    } else {
+      return (Math.sqrt(sq) + 1)**2;    
+    }
+}
+
+console.log(findNextSquare(121));
+console.log(findNextSquare(625));
+console.log(findNextSquare(114));
