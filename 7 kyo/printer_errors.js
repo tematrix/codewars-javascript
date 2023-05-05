@@ -48,3 +48,16 @@ printer_error(s) => "0/14"
 s = "aaaxbbbbyyhwawiwjjjwwm"
 printer_error(s) => "8/22"
 */
+
+function printerError(s) {
+    let colors = 'abcdefghijklm', errors = 0;
+    for (let i = 0; i < s.length; i++) {
+      if (colors.indexOf(s[i]) < 0) {
+        errors++;
+      }
+    }
+  return `${errors}/${s.length}`;
+}
+
+console.log(printerError("aaabbbbhaijjjm"));
+console.log(printerError("aaaxbbbbyyhwawiwjjjwwm"));
