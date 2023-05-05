@@ -22,3 +22,11 @@ Examples (Input --> Output)
 "12345" --> false
 "a234" --> false
 */
+
+function validatePIN (pin) {
+    return /^[0-9]{4}$/.test(pin) || /^[0-9]{6}$/.test(pin);
+}
+
+console.log(validatePIN("1234"));
+console.log(validatePIN("12345"));
+console.log(validatePIN("a234"));
