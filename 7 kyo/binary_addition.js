@@ -22,3 +22,10 @@ Examples:(Input1, Input2 --> Output (explanation)))
 1, 1 --> "10" (1 + 1 = 2 в десятичной системе или 10 в двоичной системе)
 5, 9 --> "1110" (5 + 9 = 14 в десятичной системе или 1110 в двоичной системе)
 */
+
+function addBinary(a,b) {
+    return (a + b).toString(2);
+}
+
+console.log(addBinary(1, 1));
+console.log(addBinary(5, 9));
