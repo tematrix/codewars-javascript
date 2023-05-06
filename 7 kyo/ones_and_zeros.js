@@ -18,7 +18,8 @@ However, the arrays can have varying lengths, not just limited to 4.
 
 
 ПЕРЕВОД:
-Дан массив из нулей и единиц, нужно преобразовать его в соответствующее целое число, которое представляет собой двоичное значение.
+Дан массив из нулей и единиц, нужно преобразовать его в соответствующее целое число, 
+которое представляет собой двоичное значение.
 
 Например, массив [0, 0, 0, 1] представляет собой двоичное число 0001, которое равно 1.
 
@@ -34,3 +35,16 @@ Testing: [1, 0, 1, 1] ==> 11
 
 Однако, длина массивов может быть различной, а не ограничиваться только 4 элементами.
 */
+
+const binaryArrayToNumber = arr => {
+    return parseInt(arr.join(''), 2);
+};
+
+console.log(binaryArrayToNumber([0, 0, 0, 1]));
+console.log(binaryArrayToNumber([0, 0, 1, 0]));
+console.log(binaryArrayToNumber([0, 1, 0, 1]));
+console.log(binaryArrayToNumber([1, 0, 0, 1]));
+console.log(binaryArrayToNumber([0, 0, 1, 0]));
+console.log(binaryArrayToNumber([0, 1, 1, 0]));
+console.log(binaryArrayToNumber([1, 1, 1, 1]));
+console.log(binaryArrayToNumber([1, 0, 1, 1]));
