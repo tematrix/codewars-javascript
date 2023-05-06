@@ -16,3 +16,10 @@ solution('abc', 'd') // returns false
 solution('abc', 'bc') // возвращает true
 solution('abc', 'd') // возвращает false
 */
+
+function solution(str, ending) {
+    return ending ? str.slice(-ending.length, str.length) === ending : true;
+}
+
+console.log(solution('abc', 'bc'));
+console.log(solution('abc', 'd'));
