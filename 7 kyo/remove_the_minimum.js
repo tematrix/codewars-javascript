@@ -41,3 +41,16 @@ Examples
 Вход: [5,3,2,1,4], выход: [5,3,2,4]
 Вход: [2,2,1,2,1], выход: [2,2,2,1]
 */
+
+function removeSmallest(numbers) {
+    if (!numbers) {
+      return [];
+    } else {
+      let i = numbers.indexOf(Math.min(...numbers));
+      return numbers.slice(0, i).concat(numbers.slice(i+1));
+    }
+}
+
+console.log(removeSmallest([1,2,3,4,5]));
+console.log(removeSmallest([5,3,2,1,4]));
+console.log(removeSmallest([2,2,1,2,1]));
