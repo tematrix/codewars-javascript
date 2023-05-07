@@ -16,3 +16,10 @@ Examples
 Например, строка "This is an example!" должна быть преобразована в строку "sihT si na !elpmaxe", 
 а строка "double spaces" должна стать "elbuod secaps".
 */
+
+function reverseWords(str) {
+    return str.split(' ').map(e => e.split('').reverse().join('')).join(' ');
+}
+
+console.log(reverseWords("This is an example!"));
+console.log(reverseWords("double  spaces"));
