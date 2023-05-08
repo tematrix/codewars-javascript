@@ -33,3 +33,11 @@ Also, your function will always get an array or a list, you don't have to check 
 Все массивы или списки всегда будут иметь как минимум один элемент, так что вам не нужно проверять длину. 
 Кроме того, ваша функция всегда получит массив или список, так что вам не нужно проверять на null, undefined или подобное.
 */
+
+function minMax(arr){
+    return [Math.min(...arr), Math.max(...arr)];
+}
+
+console.log(minMax([1,2,3,4,5]));
+console.log(minMax([2334454,5]));
+console.log(minMax([1]));
