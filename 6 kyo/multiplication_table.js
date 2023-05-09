@@ -26,3 +26,19 @@ For the given example, the return value should be:
 
 [[1,2,3],[2,4,6],[3,6,9]]
 */
+
+const multiplicationTable = function(size) {
+    let a = Array(size).fill([]);
+    
+    for (let i = 0; i < size; i++) {
+      a[0].push(i+1);
+    }
+    
+    for (let j = 1; j <= size; j++) {
+      a[j-1] = a[j-1].map(c => c*j)
+    }
+    
+    return a;
+};
+
+console.log(multiplicationTable(3));
