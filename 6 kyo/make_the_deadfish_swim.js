@@ -26,3 +26,19 @@ o выводит значение в массив результатов
 
 parse("iiisdoso") => [ 8, 64 ]
 */
+
+function parse(data) {
+    data = data.split('');
+    let value = 0, result = [];
+    for (let e of data) {
+      switch (e) {
+          case 'i': value++; break;
+          case 'd': value--; break;
+          case 's': value = value**2; break;
+          case 'o': result.push(value); break;
+      }
+    }
+    return result;
+}
+
+console.log(parse("iiisdoso"));
