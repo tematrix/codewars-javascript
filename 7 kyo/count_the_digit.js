@@ -40,3 +40,19 @@ k*k равны 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
 
 Обратите внимание, что в числе 121 цифра 1 встречается дважды.
 */
+
+function nbDig(n, d) {
+    let a = '', s = 0;
+    for (let i = 0; i <= n; i++) {
+      a += String(i**2);
+    }
+    for (let j = 0; j < a.length; j++) {
+      if (+a[j] == d) {
+        s++;
+      }
+    }
+    return s;
+}
+
+console.log(nbDig(10, 1));
+console.log(nbDig(25, 1));
