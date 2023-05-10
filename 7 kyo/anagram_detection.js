@@ -25,3 +25,12 @@ Examples
 "foefet" является анаграммой "toffee"
 "Buckethead" является анаграммой "DeathCubeK"
 */
+
+var isAnagram = function(test, original) {
+    let t = test.toLowerCase().split('').sort().join(''), 
+        o = original.toLowerCase().split('').sort().join('');
+    return t === o;
+};
+
+console.log(isAnagram("foefet","toffee"));
+console.log(isAnagram("Buckethead","DeathCubeK"));
