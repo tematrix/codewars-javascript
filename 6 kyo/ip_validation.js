@@ -38,3 +38,16 @@ Inputs are guaranteed to be a single string
 Ведущие нули (например, 01.02.03.04) считаются некорректными
 Входные данные гарантированно являются одной строкой.
 */
+
+function isValidIP(str) {
+    const ip = str.split('.'),
+          match = (i) => i.length === 1 ? true : i.length > 1 && i[0] !== '0' ? true : false; 
+    return (ip.length === 4 && ip.every(e => match(e) && !/\D/.test(e) && +e <= 255 && +e >= 0)) ? true : false;
+}
+
+console.log(isValidIP('1.2.3.4'));
+console.log(isValidIP('123.45.67.89'));
+console.log(isValidIP('1.2.3'));
+console.log(isValidIP('1.2.3.4.5'));
+console.log(isValidIP('123.456.78.90'));
+console.log(isValidIP('123.045.067.089'));
