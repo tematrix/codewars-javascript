@@ -14,3 +14,10 @@ You can assume all values in the array are numbers.
 
 Можно предположить, что все значения в массиве являются числами.
 */
+
+function smallEnough(a, limit){
+    return a.every(e => e <= limit);
+}
+
+console.log(smallEnough([1,2,3,4], 4));
+console.log(smallEnough([1,2,3,4], 2));
