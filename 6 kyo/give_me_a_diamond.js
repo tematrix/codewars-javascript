@@ -43,3 +43,16 @@ A size 5 diamond:
 Если входное число является четным или отрицательным, то нужно вернуть null/nil/None/..., 
 так как невозможно создать ромб нечетного размера.
 */
+
+function diamond(n){
+    if (n % 2 === 0 || n < 1) {return null;}
+    let r = [], m = Math.ceil(n/2), k = n;
+    for (let i = 0; i < m; i++) {
+      r.push(' '.repeat(i) + '*'.repeat(k) + '\n');
+      k -= 2;
+    }
+    return r.length > 1 ? [...r.slice(1).reverse(), ...r].join('') : r.join('');
+}
+
+console.log(diamond(3));
+console.log(diamond(5));
