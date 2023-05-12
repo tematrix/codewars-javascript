@@ -97,3 +97,33 @@ or "Battle Result: No victor on this battle field" if it ends in a tie.
 "Battle Result: Evil eradicates all trace of Good", если побеждает зло, 
 или "Battle Result: No victor on this battle field", если битва заканчивается вничью.
 */
+
+function goodVsEvil(good, evil){
+    const g = [1,2,3,3,4,10], 
+          e = [1,2,2,2,3,5,10],
+          
+          sum = (arr, a) => {
+            let o = arr.split(' '), s = 0;
+            for (let i = 0; i < o.length; i++) {
+              s += +o[i] * a[i];
+            }
+            return s;
+          },
+          
+          sg = sum(good, g),
+          se = sum(evil, e);
+    
+    if (sg > se) {
+      return 'Battle Result: Good triumphs over Evil';
+    } else if (sg < se) {
+      return 'Battle Result: Evil eradicates all trace of Good';
+    } else {
+      return 'Battle Result: No victor on this battle field';
+    }
+}
+
+console.log(goodVsEvil("1 1 1 1 1 1", "1 1 1 1 1 1 1"));
+console.log(goodVsEvil("0 0 0 0 0 0", "1 1 1 1 1 1 1"));
+console.log(goodVsEvil("1 0 0 0 0 0", "1 0 0 0 0 0 0"));
+console.log(goodVsEvil("0 0 0 0 0 0", "0 0 0 0 0 0 0"));
+console.log(goodVsEvil("4 4 4 4 4 4", "3 3 3 3 3 3 3"));
