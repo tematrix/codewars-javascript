@@ -23,3 +23,12 @@ Let's assume that all numbers in the input will be integer values.
 
 Предполагается, что все числа во входных данных будут целыми значениями.
 */
+
+function sumDigits(number) {
+    let n = String(number).match(/\d+/)[0].split('');
+    return n.reduce((s,e) => +e+s, 0);
+}
+
+console.log(sumDigits(10));
+console.log(sumDigits(99));
+console.log(sumDigits(-32));
