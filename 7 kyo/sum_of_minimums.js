@@ -28,3 +28,17 @@ Note: You will always be given a non-empty list containing positive values.
 
 Примечание: Вам всегда будет дан не пустой список, содержащий положительные значения.
 */
+
+function sumOfMinimums(arr) {
+    let result = 0;
+    for (let a of arr) {
+      let min = a[0];
+      for (let i = 1; i < a.length; i++) {
+        if (a[i] < min) {min = a[i];}
+      }
+      result += min;
+    }
+    return result;
+}
+
+console.log(sumOfMinimums([[ 1, 2, 3, 4, 5 ],[ 5, 6, 7, 8, 9 ],[ 20, 21, 34, 56, 100 ]]));
