@@ -52,3 +52,19 @@ numbers.sum(); // должен вернуть 15
 numbers.even(); // должен вернуть [2, 4]
 numbers.odd(); // должен вернуть [1, 3, 5]
 */
+
+Array.prototype.square = function() {return this.map(e => e**2);};
+Array.prototype.cube = function() {return this.map(e => e**3);};
+Array.prototype.average = function() {return this.length === 0 ? NaN : this.reduce((s,e) => s+e)/this.length;};
+Array.prototype.sum = function() {return this.reduce((s,e) => s+e);};
+Array.prototype.even = function() {return this.filter(e => e % 2 === 0);};
+Array.prototype.odd = function() {return this.filter(e => e % 2 !== 0);};
+
+var numbers = [1, 2, 3, 4, 5];
+
+console.log(numbers.square()); // должен вернуть [1, 4, 9, 16, 25]
+console.log(numbers.cube()); // должен вернуть [1, 8, 27, 64, 125]
+console.log(numbers.average()); // должен вернуть 3
+console.log(numbers.sum()); // должен вернуть 15
+console.log(numbers.even()); // должен вернуть [2, 4]
+console.log(numbers.odd()); // должен вернуть [1, 3, 5]
