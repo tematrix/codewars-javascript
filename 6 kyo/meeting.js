@@ -33,3 +33,14 @@ s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;R
 
 Может случиться, что в двух разных семьях с одинаковой фамилией два человека также имеют одно и то же имя.
 */
+
+function meeting(s) {
+    let a = s.split(';').map(e => e.toLowerCase().split(':').reverse()).sort(),
+        result = '';
+    for (let e of a) {
+      result += `(${e[0].toUpperCase()}, ${e[1].toUpperCase()})`;
+    }
+    return result;
+}
+
+console.log(meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"));
