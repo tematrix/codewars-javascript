@@ -40,3 +40,34 @@ u -> 5
 Для простоты можно предположить, что любые цифры, переданные в функцию, 
 будут соответствовать гласным.
 */
+
+function encode(string) {
+    let a = string.split('');
+    for (let i = 0; i < a.length; i++) {
+      switch(a[i]) {
+          case 'a': a[i] = '1'; break;
+          case 'e': a[i] = '2'; break;
+          case 'i': a[i] = '3'; break;
+          case 'o': a[i] = '4'; break;
+          case 'u': a[i] = '5'; break;
+      }
+    }
+    return a.join('');
+}
+  
+  function decode(string) {
+    let a = string.split('');
+    for (let i = 0; i < a.length; i++) {
+      switch(a[i]) {
+          case '1': a[i] = 'a'; break;
+          case '2': a[i] = 'e'; break;
+          case '3': a[i] = 'i'; break;
+          case '4': a[i] = 'o'; break;
+          case '5': a[i] = 'u'; break;
+      }
+    }
+    return a.join('');
+}
+
+console.log(encode("hello"));
+console.log(decode("h3 th2r2"));
