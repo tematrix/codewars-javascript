@@ -31,3 +31,15 @@ There will always be a missing element and its length will be always between the
 Если массив в массиве равен null или пустой, метод также должен вернуть 0!
 Всегда будет отсутствовать один элемент, и его длина всегда будет между заданными массивами.
 */
+
+function getLengthOfMissingArray(a) {
+    if (!a || a.length === 0 || a.some(e => !e || e.length === 0)) {return 0;}
+    let l = a.map(e => e.length).sort((a,b) => a - b);
+    for (let i = 1; i < l.length; i++) {
+      if (l[i] - l[i-1] !== 1) {
+        return l[i] - 1;
+      }
+    }
+}
+
+console.log(getLengthOfMissingArray([[1, 2], [4, 5, 1, 1], [1], [5, 6, 7, 8, 9]]));
