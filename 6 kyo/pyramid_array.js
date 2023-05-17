@@ -20,3 +20,17 @@ pyramid(3) => [ [1], [1, 1], [1, 1, 1] ]
 
 Примечание: подмассивы должны быть заполнены единицами.
 */
+
+function pyramid(n) {
+    if (n <= 0) {return [];}
+    let a = [];
+    for (let i = 1; i <= n; i++) {
+      a.push(Array(i).fill(1));
+    }
+    return a;
+}
+
+console.log(pyramid(0));
+console.log(pyramid(1));
+console.log(pyramid(2));
+console.log(pyramid(3));
