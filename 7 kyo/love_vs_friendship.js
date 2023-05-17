@@ -28,3 +28,13 @@ The input will always be made of only lowercase letters and will never be empty.
 
 Входные данные всегда будут состоять только из строчных букв и никогда не будут пустыми.
 */
+
+function wordsToMarks(string){
+    let a = 'abcdefghijklmnopqrstuvwxyz'.split(''), alpha = {}, sum = 0;
+    for (let i = 0; i < a.length; i++) {alpha[a[i]] = i+1;}  
+    for (let e of string) {sum += alpha[e];}  
+    return sum;
+}
+
+console.log(wordsToMarks('love'));
+console.log(wordsToMarks('friendship'));
