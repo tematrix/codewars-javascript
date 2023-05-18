@@ -26,3 +26,19 @@ obj.getSecret() # вернет 5
 obj.setSecret(2)
 obj.getSecret() # вернет 2
 */
+
+function createSecretHolder(secret) {
+    return {
+      getSecret: function() {
+        return secret;
+      },
+      setSecret: function(newSecret) {
+        secret = newSecret;
+      }    
+    };  
+}
+
+let obj = createSecretHolder(5);
+console.log(obj.getSecret()); //# вернет 5
+obj.setSecret(2);
+console.log(obj.getSecret()); //# вернет 2
