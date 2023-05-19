@@ -22,3 +22,18 @@ dashatize(6815) -> '68-1-5'
 dashatize(274) -> '2-7-4'
 dashatize(6815) -> '68-1-5'
 */
+
+function dashatize(num) {
+    if (num === 0) {return '0';}
+    if (/\./.test(String(num)) || !num) {return 'NaN';}
+    if (num < 0) {num *= -1;}
+    if (String(num).length === 1) {return `${num}`;}
+    
+    return String(num).replace(/[1,3,5,7,9]/g, '-$&-')
+                      .replace(/^-/, '')
+                      .replace(/-$/, '')
+                      .replace(/-{2,}/g, '-');
+}
+
+console.log(dashatize(274));
+console.log(dashatize(6815));
