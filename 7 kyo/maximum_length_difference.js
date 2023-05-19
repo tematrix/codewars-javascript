@@ -36,3 +36,21 @@ mxdiflg(a1, a2) --> 13
 ввод: 2 строки со строковыми подстроками, разделенными запятой,
 вывод: число в виде строки.
 */
+
+function mxdiflg(a1, a2) {
+    if (a1.length === 0 || a2.length === 0) {return -1;}
+    
+    let maxDif = -1;
+    for (let i = 0; i < a1.length; i++) {
+      for (let j = 0; j < a2.length; j++) {
+        const dif = Math.abs(a1[i].length - a2[j].length);
+        if (dif > maxDif) {maxDif = dif;}
+      }
+    }
+    
+    return maxDif;
+}
+
+const a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"],
+      a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"];
+console.log(mxdiflg(a1,a2));
