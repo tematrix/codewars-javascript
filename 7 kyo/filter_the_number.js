@@ -22,3 +22,9 @@ you have to return all the numbers in that string in the order they occur.
 Вам будет дана строка, в которой числа и буквы перемешаны. 
 Вам нужно вернуть все числа в том порядке, в котором они встречаются в строке.
 */
+
+var filterString = function(value) {
+    return Number(value.match(/\d/g).join(''));
+};
+
+console.log(filterString('H3ll0'));
