@@ -23,3 +23,14 @@ Examples
 "#######" ==> ""
 "" ==> ""
 */
+
+function cleanString(s) {
+    let result = [];
+    for (let e of s) {e === '#' ? result.pop() : result.push(e);}
+    return result.join('');
+}
+
+console.log(cleanString("abc#d##c"));
+console.log(cleanString("abc##d######"));
+console.log(cleanString("#######"));
+console.log(cleanString(""));
