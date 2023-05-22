@@ -23,3 +23,22 @@ For empty string return:
 Для пустой строки верните:
 ["", 0]
 */
+
+function longestRepetition(s) {
+    if (!s) {return ["",0];}
+    let c = s[0], max = 1, cur = 1;
+    for (let i = 1; i < s.length; i++) {
+      if (s[i] === s[i-1]) {
+        cur++;      
+        if (cur > max) {
+          c = s[i];
+          max = cur;
+        }
+      } else {
+        cur = 1;
+      }
+    }  
+    return [c, max];
+}
+
+console.log(longestRepetition('Hello'));
