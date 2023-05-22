@@ -22,3 +22,11 @@ solution({a: 1, b: '2'}) // should return "a = 1,b = 2"
 
 solution({a: 1, b: '2'}) // должно вернуть "a = 1, b = 2"
 */
+
+function solution(pairs){
+    let a = Object.entries(pairs), result = [];
+    for (let e of a) {result.push(`${e[0]} = ${e[1]}`);}
+    return result.join(',');
+}
+
+console.log(solution({a: 1, b: '2'}));
