@@ -18,3 +18,7 @@ solution(null); // should return []
 solution([1, 2, 10, 50, 5]); // должно вернуть [1,2,5,10,50]
 solution(null); // должно вернуть []
 */
+
+function solution(nums) {return nums ? nums.sort((a,b) => a-b) : [];}
+
+console.log(solution([1, 2, 10, 50, 5]));
