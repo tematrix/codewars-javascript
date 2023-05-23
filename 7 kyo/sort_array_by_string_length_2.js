@@ -30,3 +30,9 @@ so you will not have to decide how to order multiple strings of the same length.
 Все строки в массиве, переданном в вашу функцию, будут разной длины, 
 поэтому вам не нужно будет решать, как упорядочить несколько строк одинаковой длины.
 */
+
+function sortByLength (array) {
+  return array.sort((a,b) => a.length - b.length);
+}
+
+console.log(sortByLength(["Telescopes", "Glasses", "Eyes", "Monocles"]));
