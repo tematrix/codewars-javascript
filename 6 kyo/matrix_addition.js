@@ -52,3 +52,19 @@ matrixAddition(
 Функция matrixAddition принимает два аргумента - две квадратные матрицы 
 одинакового размера и возвращает их сумму в виде квадратной матрицы того же размера.
 */
+
+function matrixAddition(a, b) {
+    let result = [];
+    
+    const sum = (x, y) => {
+      let r = []
+      for (let j = 0; j < x.length; j++) {r.push(x[j] + y[j]);}
+      return r;
+    };
+    
+    for (let i = 0; i < a.length; i++) {result.push(sum(a[i], b[i]));}
+    
+    return result;
+}
+
+console.log(matrixAddition([[1, 2, 3],[3, 2, 1],[1, 1, 1]],[[2, 2, 1],[3, 2, 3],[1, 1, 3]]));
