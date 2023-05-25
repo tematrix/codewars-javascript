@@ -44,3 +44,20 @@ consecutives 3 is 6 ..."
 [1, 1, 7, 7, 3] # должен вернуть [2, 14, 3]
 [-5, -5, 7, 7, 12, 0] # должен вернуть [-10, 14, 12, 0]
 */
+
+function sumConsecutives(s) {
+    let p = s[0];
+    for (let i = 1; i < s.length; i++) {
+      if (s[i] === p) {
+        s[i-1] = s[i-1] + p;
+        s.splice(i,1); i--;
+      } else {
+        p = s[i];
+      }
+    }
+    return s;
+}
+
+console.log(sumConsecutives([1, 4, 4, 4, 0, 4, 3, 3, 1]));
+console.log(sumConsecutives([1, 1, 7, 7, 3]));
+console.log(sumConsecutives([-5, -5, 7, 7, 12, 0]));
