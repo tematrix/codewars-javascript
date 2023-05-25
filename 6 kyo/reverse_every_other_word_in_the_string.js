@@ -14,3 +14,14 @@ Punctuation marks should be treated as if they are a part of the word in this ka
 "hello world" -> "hello dlrow"
 "hello to the world" -> "hello ot eht dlrow"
 */
+
+function reverse(str){
+    let a = str.trim().replace(/\s{2,}/g, ' ').split(' ');
+    for (let i = 1; i < a.length; i += 2) {
+      a[i] = a[i].split('').reverse().join('');
+    }
+    return a.join(' ');
+}
+
+console.log(reverse("hello world"));
+console.log(reverse("hello to the world"));
