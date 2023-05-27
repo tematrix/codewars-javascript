@@ -26,3 +26,28 @@ sumStrings('1','2') // => '3'
 В Python ваше решение должно работать с огромными числами (около миллиона цифр), 
 преобразование в int не будет работать.
 */
+
+function sumStrings(a,b) {
+    let r = "",
+        c = 0,
+        i = a.length - 1,
+        j = b.length - 1;
+    
+    while (i >= 0 || j >= 0 || c > 0) {
+      let s = c;
+      if (i >= 0) {s += parseInt(a[i]);}
+      if (j >= 0) {s += parseInt(b[j]);}
+      c = Math.floor(s / 10);
+      r = (s % 10) + r;
+      i--;
+      j--;
+    }
+  
+    while (r[0] === "0" && r.length > 1) {
+      r = r.slice(1);
+    }
+    
+    return r;
+}
+
+console.log(sumStrings('1','2'));
