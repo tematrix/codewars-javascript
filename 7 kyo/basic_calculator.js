@@ -34,3 +34,24 @@ calculate(4, "/", 0); // должно вернуть null
 Учитывайте, что на ноль делить нельзя. Если производится попытка деления на ноль,
 функция должна вернуть null (выбросить ArgumentException в C#)/(None в Python).
 */
+
+function calculate(n1, o, n2) {
+    if (typeof(n1 + n2) === 'number') {
+      switch(o) {
+        case '+': return n1 + n2;
+        case '-': return n1 - n2;
+        case '*': return n1 * n2;
+        case '/': return n2 !== 0 ? n1 / n2 : null;
+        default: return null;
+      }
+    } else {
+      return null;
+    }
+}
+
+console.log(calculate(2, "+", 4));
+console.log(calculate(6, "-", 1.5));
+console.log(calculate(-4, "*", 8));
+console.log(calculate(49, "/", -7));
+console.log(calculate(8, "m", 2));
+console.log(calculate(4, "/", 0));
