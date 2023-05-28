@@ -30,3 +30,13 @@ solve("CODe") = "CODE". Символов в верхнем регистре бо
 solve("coDE") = "code". Символов в верхнем и нижнем регистре одинаковое количество. 
 Измените все буквы на символы в нижнем регистре.
 */
+
+function solve(s) {
+    let u = 0, l = 0;
+    for (let i = 0; i < s.length; i++) {s[i] === s[i].toUpperCase() ? u++ : l++;}
+    return u > l ? s.toUpperCase() : s.toLowerCase();
+}
+
+console.log(solve("coDe"));
+console.log(solve("CODe"));
+console.log(solve("coDE"));
