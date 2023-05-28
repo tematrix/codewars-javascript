@@ -47,3 +47,12 @@ inAscOrder([9,8,7,6,5,4,3,2,1]); // возвращает false,
 Примечание. Если ваше решение проходит все тесты, но не проходит 
 случайные тесты, убедитесь, что вы не изменяете входной массив.
 */
+
+function inAscOrder(arr) {
+    return arr.join('') === [...arr].sort((a,b)=>a-b).join('');
+}
+
+console.log(inAscOrder([1,2,4,7,19]));
+console.log(inAscOrder([1,2,3,4,5]));
+console.log(inAscOrder([1,6,10,18,2,4,20]));
+console.log(inAscOrder([9,8,7,6,5,4,3,2,1]));
