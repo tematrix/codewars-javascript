@@ -28,3 +28,16 @@ N никогда не будет меньше 1.
 
 fizzbuzz(3) --> [1, 2, "Fizz"]
 */
+
+function fizzbuzz(n) {
+    const a = [];
+    for (let i = 1; i <= n; i++) {
+      let s = '';
+      if (i % 3 === 0) {s += 'Fizz';}
+      if (i % 5 === 0) {s += 'Buzz';}
+      s ? a.push(s) : a.push(i);
+    }
+    return a;
+}
+
+console.log(fizzbuzz(3));
