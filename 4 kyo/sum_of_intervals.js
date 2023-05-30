@@ -75,3 +75,23 @@ All tested intervals are subsets of the range [-1000000000, 1000000000].
 Сумма длин этих интервалов равна 7. Поскольку [1, 4] и [3, 5] пересекаются, 
 мы можем рассматривать интервал как [1, 5], у которого длина равна 4.
 */
+
+function sumIntervals(intervals) {
+    intervals.sort((a,b)=>a[0]-b[0]);
+    let cur = intervals[0], sum = 0;
+    
+    for (let i = 1; i < intervals.length; i++) {
+      const int = intervals[i];
+      if (int[0] <= cur[1]) {
+        cur[1] = Math.max(cur[1], int[1]);
+      } else {
+        sum += cur[1] - cur[0];
+        cur = int;
+      }    
+    }
+    
+    sum += cur[1] - cur[0];
+    return sum;
+}
+
+console.log(sumIntervals([[1, 4],[7, 10],[3, 5]]));
