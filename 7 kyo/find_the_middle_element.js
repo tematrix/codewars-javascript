@@ -32,3 +32,11 @@ gimme([2, 3, 1]) => 0
 gimme([5, 10, 14]) => 1
 10 - это число, которое находится между 5 и 14, а индекс 10 во входном массиве равен 1.
 */
+
+function gimme (triplet) {
+    const sorted = [...triplet].sort((a,b)=>a-b);
+    return triplet.indexOf(sorted[1]);
+}
+
+console.log(gimme([2, 3, 1]));
+console.log(gimme([5, 10, 14]));
