@@ -23,3 +23,9 @@ we do not have any chocolate to split). Input will always be a non-negative inte
 нет шоколада для разделения, нам не нужно делать разрывов). 
 Входные данные всегда будут неотрицательным целым числом.
 */
+
+function breakChocolate(n,m) {
+    return n <= 0 || m <= 0 ? 0 : n * m  - 1;
+}
+
+console.log(breakChocolate(3,1));
