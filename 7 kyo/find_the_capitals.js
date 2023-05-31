@@ -14,3 +14,13 @@ capitals('CodEWaRs'), [0,3,4,6];
 Пример:
 capitals('CodEWaRs') должна вернуть [0,3,4,6].
 */
+
+const capitals = (word) => {
+    let result = [];
+    for (let i = 0; i < word.length; i++) {
+      if (word[i] === word[i].toUpperCase()) {result.push(i);}
+    }
+    return result;
+};
+
+console.log(capitals('CodEWarS'));
