@@ -31,3 +31,20 @@ It should return a five digit integer. The number passed may be as large as 1000
 содержащей только цифры. Функция должна возвращать пятизначное целое число. 
 Число, переданное в функцию, может быть длиной до 1000 цифр.
 */
+
+function solution(digits){
+    const a = [];
+    for (let i = 0; i < digits.length - 4; i++) {
+      a.push(+digits.slice(i, i+5));
+    }
+    
+    let max = a[0];
+    for (let j = 1; j < a.length; j++) {
+      if (a[j] > max) {max = a[j];}
+    }
+    
+    return max;
+}
+
+console.log(solution('283910'));
+console.log(solution('1234567890'));
