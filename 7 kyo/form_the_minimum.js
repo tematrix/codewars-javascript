@@ -40,3 +40,18 @@ minValue({1, 9, 3, 1, 7, 4, 6, 6, 7}) ==> вернуть (134679)
 Объяснение: (134679) - минимальное число, 
 которое можно составить из {1, 9, 3, 1, 7, 4, 6, 6, 7} без дубликатов.
 */
+
+function minValue(values){
+    let s = values.sort((a,b)=>a-b), c = s[0], result = [c];
+    for (let i = 1; i < s.length; i++) {
+      if (s[i] !== c) {
+        result.push(s[i]);
+        c = s[i];
+      }
+    }
+    return +result.join('');
+}
+
+console.log(minValue([1,3,1]));
+console.log(minValue([5,7,5,9,7]));
+console.log(minValue([1,9,3,1,7,4,6,6,7]));
