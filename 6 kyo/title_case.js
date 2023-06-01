@@ -54,3 +54,21 @@ titleCase('a clash of KINGS', 'a an the of') // должно вернуть: 'A 
 titleCase('THE WIND IN THE WILLOWS', 'The In') // должно вернуть: 'The Wind in the Willows'
 titleCase('the quick brown fox') // должно вернуть: 'The Quick Brown Fox'
 */
+
+function titleCase(title, minorWords) {
+    if (!title) {return '';}
+    
+    let m = [];
+    if (minorWords) {m = minorWords.toLowerCase().split(' ');}
+    
+    return title.toLowerCase().split(' ').map((e,i) => {
+      if (i === 0 || !m.includes(e)) {
+        return e[0].toUpperCase() + e.slice(1);
+      }
+      return e;
+    }).join(' ');  
+}
+
+console.log(titleCase('a clash of KINGS', 'a an the of'));
+console.log(titleCase('THE WIND IN THE WILLOWS', 'The In'));
+console.log(titleCase('the quick brown fox'));
