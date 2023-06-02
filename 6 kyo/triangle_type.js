@@ -50,3 +50,16 @@ triangleType(8, 5, 7); // вернет 1 (остроугольный треуг�
 triangleType(3, 4, 5); // вернет 2 (прямоугольный треугольник, углы приблизительно 37°, 53° и точно 90°)
 triangleType(7, 12, 8); // вернет 3 (тупоугольный треугольник, углы приблизительно 34°, 106° и 40°)
 */
+
+function triangleType(a, b, c){
+    if (a + b <= c || b + c <= a || a + c <= b) {return 0;}
+    const degA = Math.acos((b**2 + c**2 - a**2) / (2*b*c)) * (180 / Math.PI),
+          degB = Math.acos((a**2 + c**2 - b**2) / (2*a*c)) * (180 / Math.PI),
+          degC = Math.acos((a**2 + b**2 - c**2) / (2*a*b)) * (180 / Math.PI);
+    return degA > 90 || degB > 90 || degC > 90 ? 3 : degA === 90 || degB === 90 || degC === 90 ? 2 : 1;
+}
+
+console.log(triangleType(2, 4, 6));
+console.log(triangleType(8, 5, 7));
+console.log(triangleType(3, 4, 5));
+console.log(triangleType(7, 12, 8));
