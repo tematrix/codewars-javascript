@@ -64,3 +64,13 @@ N23.43345, E32.6457
 0, 1,2
 0.342q0832, 1.2324
 */
+
+function isValidCoordinates(coordinates){
+    let regexp = /^-?([1-8]?\d|90)\.?\d*,\s?-?(1?[0-7]?\d|180)\.?\d*$/;
+    return regexp.test(coordinates);
+}
+
+console.log(isValidCoordinates('-23, 25'));
+console.log(isValidCoordinates('24.53525235, 23.45235'));
+console.log(isValidCoordinates('23.234, - 23.4234'));
+console.log(isValidCoordinates('N23.43345, E32.6457'));
