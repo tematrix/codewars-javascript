@@ -14,3 +14,9 @@ the sides of given length and false in any other case.
 
 (В этом случае все треугольники должны иметь площадь больше 0, чтобы быть принятыми).
 */
+
+function isTriangle(a,b,c) {
+    return a + b > c && a + c > b && b + c > a;
+}
+
+console.log(isTriangle(2,3,4));
