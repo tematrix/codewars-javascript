@@ -30,3 +30,18 @@ this triangle (starting at index 1) e.g.: (Input --> Output)
 1 --> 1
 2 --> 3 + 5 = 8
 */
+
+function rowSumOddNumbers(n) {
+	let odd = 1, a = [];
+  for (let i = 0; i <= n; i++) {    
+    a.push([]);
+    for (let j = 0; j <= i; j++) {
+      a[i].push(odd);
+      odd += 2;      
+    }
+  }
+  return a[n-1].reduce((s,e)=>s+e, 0);
+}
+
+console.log(rowSumOddNumbers(1));
+console.log(rowSumOddNumbers(2));
