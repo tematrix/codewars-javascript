@@ -6,3 +6,13 @@ Your task is to write function factorial.
 ПЕРЕВОД:
 Ваша задача - написать функцию factorial (факториал).
 */
+
+function factorial(n){
+    if (n <= 1) {
+      return 1;
+    } else {
+      return n * factorial(n-1);
+    }
+}
+
+console.log(factorial(5));
