@@ -65,3 +65,12 @@ rowWeights([80]) ==> return (80, 0)
 Первый элемент 80 - это общий вес команды 1,
 а второй элемент 0 - это общий вес команды 2.
 */
+
+function rowWeights(array){
+    return [array.filter((e,i) => i % 2 === 0).reduce((s,e) => s+e, 0), 
+            array.filter((e,i) => i % 2 !== 0).reduce((s,e) => s+e, 0)]
+}
+
+console.log(rowWeights([13, 27, 49]));
+console.log(rowWeights([50, 60, 70, 80]));
+console.log(rowWeights([80]));
