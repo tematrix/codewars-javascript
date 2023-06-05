@@ -14,3 +14,11 @@ All inputs will be valid.
 
 Все входные данные будут допустимы.
 */
+
+function digits(n) {
+    return String(n).length;
+}
+
+console.log(digits(9));
+console.log(digits(66));
+console.log(digits(128685));
