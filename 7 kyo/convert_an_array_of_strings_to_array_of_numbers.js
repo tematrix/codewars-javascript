@@ -23,3 +23,9 @@ Note that you can receive floats as well.
 мы должны преобразовать его в тип number. Если элемент представляет собой число с 
 плавающей точкой, мы должны преобразовать его в тип float.
 */
+
+function toNumberArray(stringarray){
+    return stringarray.map(e => +e);
+}
+
+console.log(toNumberArray(["1", "2", "3"]));
