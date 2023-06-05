@@ -84,3 +84,13 @@ a = ["az", "toto", "picaro", "zone", "kiwi"] -->
 Примечание
 Вы можете увидеть другие примеры для каждого языка в "Ваших тестовых случаях".
 */
+
+function partlist(arr) {
+    let result = [];
+    for (let i = 1; i < arr.length; i++) {
+      result.push([arr.slice(0,i).join(' '),arr.slice(i).join(' ')]);
+    }
+    return result;
+}
+
+console.log(partlist(["az", "toto", "picaro", "zone", "kiwi"]));
