@@ -11,3 +11,15 @@ Return as a number.
 Необходимо сложить все целочисленные элементы массива и вычесть из этой суммы 
 сумму всех строковых представлений целых чисел. Результатом должно быть число.
 */
+
+function divCon(x){
+    let result = 0;
+    for (let e of x) {
+      if (typeof e === 'number') {result += e;}
+      if (typeof e === 'string') {result -= +e;}
+    }
+    return result;
+}
+
+console.log(divCon([1, "2", 3, "4", "5"]));
+console.log(divCon([1, "2", 3.5, "4", 5]));
