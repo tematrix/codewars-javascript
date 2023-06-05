@@ -19,3 +19,14 @@ Example:
 'acb' --> 'bca'
 'aabacbaa' --> 'bbabcabb'
 */
+
+function switcheroo(x){
+    let a = x.split(''), r = [];
+    for (let e of a) {
+      e === 'a' ? r.push('b') : e === 'b' ? r.push('a') : r.push('c');
+    }
+    return r.join('');
+}
+
+console.log(switcheroo('acb'));
+console.log(switcheroo('aabacbaa'));
