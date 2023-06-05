@@ -77,3 +77,19 @@ If you are given an array with multiple answers, return the lowest correct index
 Примечание:
 Если вам дан массив с несколькими ответами, верните наименьший правильный индекс.
 */
+
+function findEvenIndex(arr) {
+    const a = [0, ...arr, 0];
+    for (let i = 1; i < a.length; i++) {
+        let l = a.slice(0,i),
+            r = a.slice(i+1);
+        if (l.reduce((s,e)=>s+e, 0) === r.reduce((s,e)=>s+e, 0)) {
+            return i-1;
+        }
+    }
+    return -1;
+}
+
+console.log(findEvenIndex([1,2,3,4,3,2,1]));
+console.log(findEvenIndex([1,100,50,-51,1,1]));
+console.log(findEvenIndex([20,10,-80,10,10,15,35]));
