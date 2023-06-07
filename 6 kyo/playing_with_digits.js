@@ -55,3 +55,18 @@ digPow(92, 1) должна вернуть -1, потому что невозмо
 digPow(695, 2) должна вернуть 2, потому что 6² + 9³ + 5⁴ = 1390 = 695 * 2
 digPow(46288, 3) должна вернуть 51, потому что 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
 */
+
+function digPow(n, p){
+    let sum = 0, num = String(n).split(''), y = p, k;
+    for (let i = 0; i < num.length; i++) {
+        sum += Number(num[i])**y;
+        y++;
+    }
+    k = sum / n;
+    return k === Math.floor(k) ? k : -1;
+}
+
+console.log(digPow(89, 1));
+console.log(digPow(92, 1));
+console.log(digPow(695, 2));
+console.log(digPow(46288, 3));
