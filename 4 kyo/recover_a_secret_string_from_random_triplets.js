@@ -31,3 +31,46 @@ do not occur in one of the triplets given to you.
 В частности, это означает, что секретная строка никогда не будет содержать букв,
 которые не встречаются в одной из предоставленных вам троек.
 */
+
+var recoverSecret = function(triplets) {
+    let adjList = {},
+        visited = {},
+        result = [],
+        currentNode = null;
+    
+    for (let triplet of triplets) {
+      let [a,b,c] = triplet;
+      if (!adjList[a]) {
+        adjList[a] = [];
+        visited[a] = false;
+      }
+      if (!adjList[b]) {
+        adjList[b] = [];
+        visited[b] = false;
+      }
+      if (!adjList[c]) {
+        adjList[c] = [];
+        visited[c] = false;
+      }
+      adjList[a].push(b);
+      adjList[b].push(c);
+    }
+  
+    const dfs = (node) => {
+      visited[node] = true;
+      for (let neighbor of adjList[node]) {
+        if (!visited[neighbor]) {
+          dfs(neighbor);
+        }
+      }
+      result.unshift(node);
+    };
+  
+    for (let node in visited) {
+      if (!visited[node]) {
+        dfs(node);
+      }
+    }
+  
+    return result.join('');
+};
