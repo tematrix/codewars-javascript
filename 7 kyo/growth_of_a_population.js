@@ -65,3 +65,16 @@ nb_year(1500000, 2.5, 10000, 2000000) -> 10
 Не забудьте преобразовать параметр процент в процентном выражении в теле функции:
 если параметр процент равен 2, вы должны преобразовать его в 0,02.
 */
+
+function nbYear(p0, percent, aug, p) {
+    let years = 0;
+    percent /= 100;
+    while (p0 < p) {
+      p0 = Math.floor(p0 + p0 * percent + aug);
+      years++;
+    }
+    return years;
+}
+
+console.log(nbYear(1500, 5, 100, 5000));
+console.log(nbYear(1500000, 2.5, 10000, 2000000));
