@@ -36,3 +36,7 @@ The second value in the first pair in the array is 0, since the bus is empty in 
 
 Второе значение в первой паре в массиве равно 0, так как автобус пуст на первой автобусной остановке.
 */
+
+var number = (busStops) => busStops.reduce((p,c) => p + c[0] - c[1], 0);
+
+console.log(number([[15, 5], [20, 4], [8, 10]]));
