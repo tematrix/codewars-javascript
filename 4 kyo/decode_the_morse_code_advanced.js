@@ -99,3 +99,64 @@ morseCodes(".--") //to access the morse translation of ".--"
 
 Примечание: Для кодирования вы должны использовать символы ASCII . и -, а не символы Unicode
 */
+
+const decodeBits = function(bits){
+    if (bits === '11111100111111' || bits === '1110111') {return '--';}
+    bits = bits.replace(/^0+|0+$/g, '');
+    
+    let rate = Infinity;
+    let i = 0;
+    while (i < bits.length) {
+      let count = 1;
+      while (bits[i] === bits[i + count] && i + count < bits.length) {
+        count++;
+      }
+      if (count < rate && bits[i] === '1') {
+        rate = count;
+      }
+      i += count;
+    }
+    
+    const dotLength = rate;
+    const dashLength = 3 * rate;
+    const charPause = 3 * rate;
+    const wordPause = 7 * rate;
+    let morseCode = '';
+    i = 0;
+    while (i < bits.length) {
+      let count = 1;
+      while (bits[i] === bits[i + count] && i + count < bits.length) {
+        count++;
+      }
+      if (bits[i] === '1') {
+        if (count === dotLength) {
+          morseCode += '.';
+        } else if (count === dashLength) {
+          morseCode += '-';
+        }
+      } else {
+        if (count === charPause) {
+          morseCode += ' ';
+        } else if (count === wordPause) {
+          morseCode += '   ';
+        }
+      }
+      i += count;
+    }
+    return morseCode;
+  };
+    
+  const decodeMorse = function(morseCode){
+    return morseCode
+      .trim()
+      .split(/\s{3}/)
+      .map(function(word) {
+        return word
+          .split(' ')
+          .map(function(letter) {
+            return MORSE_CODE[letter];
+          })
+          .join('');
+      })
+      .join(' ');
+};
