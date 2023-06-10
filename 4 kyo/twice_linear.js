@@ -41,3 +41,22 @@ dbl_linear(10) должна вернуть 22
 Примечание:
 Уделите внимание эффективности решения.
 */
+
+function dblLinear(n) {
+    let u = [1], a = 0, b = 0;
+    for (let i = 0; i < n; i++) {
+      let nextA = 2 * u[a] + 1,
+          nextB = 3 * u[b] + 1;
+      if (nextA <= nextB) {
+        u.push(nextA);
+        a++;
+        if (nextA === nextB) {b++;}
+      } else {
+        u.push(nextB);
+        b++;
+      }
+    }
+    return u[n];
+}
+
+console.log(dblLinear(10));
