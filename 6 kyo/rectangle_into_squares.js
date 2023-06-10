@@ -48,3 +48,17 @@ sqInRect(3, 5) должен возвращать [3, 2, 1, 1].
 
 Переведено с помощью www.DeepL.com/Translator (бесплатная версия)
 */
+
+function sqInRect(lng, wdth){
+    if (lng === wdth) {return null;}
+    const result = [];
+    while (lng > 0 && wdth > 0) {
+      const s = Math.min(lng, wdth);
+      result.push(s);
+      lng > wdth ? lng -= s : wdth -= s;
+    }
+    return result;
+}
+
+console.log(sqInRect(5, 3));
+console.log(sqInRect(3, 5));
