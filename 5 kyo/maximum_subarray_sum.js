@@ -26,3 +26,21 @@ maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])
 Считается, что пустой список имеет нулевую наибольшую сумму. 
 Обратите внимание, что пустой список или массив также является допустимым подсписком/подмассивом.
 */
+
+const maxSequence = function(arr){
+    let max = 0, cur = 0;
+    
+    for (let i = 0; i < arr.length; i++) {
+      cur += arr[i];
+      
+      if (cur > max) {
+        max = cur;
+      } else if (cur < 0) {
+        cur = 0;
+      }
+    }
+    
+    return max;
+};
+
+console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
