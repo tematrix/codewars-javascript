@@ -30,3 +30,17 @@ m, а вы должны вернуть целое число n, такое ка�
 findNb(1071225) --> 45
 findNb(91716553919377) --> -1
 */
+
+function findNb(m) {
+    let n = 0, sum = 0;
+    
+    while (sum < m) {
+      n++;
+      sum += Math.pow(n, 3);
+    }
+    
+    return sum === m ? n : -1;
+}
+
+console.log(findNb(1071225));
+console.log(findNb(91716553919377));
