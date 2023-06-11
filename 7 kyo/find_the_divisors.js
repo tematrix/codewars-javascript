@@ -22,3 +22,17 @@ divisors(12); // должно возвращать [2,3,4,6].
 divisors(25); // должно возвращать [5]
 divisors(13); // должно возвращать "13 - простое".
 */
+
+function divisors(integer) {
+    let result = [];
+    
+    for (let i = 2; i < integer; i++) {
+      if (integer % i === 0) {result.push(i);}
+    }
+    
+    return result.length === 0 ? `${integer} is prime` : result;
+}
+
+console.log(divisors(12));
+console.log(divisors(25));
+console.log(divisors(13));
