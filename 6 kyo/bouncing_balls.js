@@ -55,3 +55,20 @@ Examples:
 - h = 3, отскок = 1, окно = 1,5, результат -1 
 (Условие 2) не выполняется).
 */
+
+function bouncingBall(h,  bounce,  window) {
+    if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) {return -1;}
+    
+    let count = -1,
+        height = h;
+    
+    while (height > window) {
+      count += 2;
+      height *= bounce;
+    }
+    
+    return count;
+}
+
+console.log(bouncingBall(3, 0.66, 1.5));
+console.log(bouncingBall(3, 1, 1.5));
