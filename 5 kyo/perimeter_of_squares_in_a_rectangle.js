@@ -38,3 +38,18 @@ perimeter(7)  should return 216
 периметр(5) должен возвращать 80
 периметр(7) должен возвращать 216
 */
+
+function perimeter(n) {
+    if (n === 0) {return 4;}
+    
+    let fib = [1, 1];
+    
+    for (let i = 2; i <= n; i++) {
+      fib[i] = fib[i - 1] + fib[i - 2];
+    }
+    
+    return 4 * fib.reduce((s,e) => s + e, 0);
+}
+
+console.log(perimeter(5));
+console.log(perimeter(7));
