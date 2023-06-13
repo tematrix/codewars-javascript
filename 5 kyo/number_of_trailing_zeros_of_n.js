@@ -32,3 +32,17 @@ zeros(12) = 2
 
 Подсказка: Вы не должны вычислять факториал. Найдите другой способ найти количество нулей.
 */
+
+function zeros (n) {
+    let count = 0;
+    
+    while (n > 0) {
+      n = Math.floor(n / 5);
+      count += n;
+    }
+    
+    return count;
+}
+
+console.log(zeros(6));
+console.log(zeros(12));
