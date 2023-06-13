@@ -18,3 +18,26 @@ Example: n = 86240 should return "(2**5)(5)(7**2)(11)"
 
 Пример: n = 86240 должен вернуть "(2**5)(5)(7**2)(11)".
 */
+
+function primeFactors(n){
+    let factors = '', divisor = 2;
+    
+    while (n > 2) {
+      let count = 0;
+      
+      while (n % divisor === 0) {
+        count++;
+        n = n / divisor;
+      }
+      
+      if (count > 0) {
+        factors += `(${divisor}${count > 1 ? `**${count}` : ''})`;
+      }
+      
+      divisor++;
+    }
+    
+    return factors ? factors : `(${n})`;
+}
+
+console.log(primeFactors(86240));
