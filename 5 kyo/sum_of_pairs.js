@@ -65,3 +65,22 @@ sum_pairs([10, 5, 2, 3, 7, 5], 10)
 ПРИМЕЧАНИЕ: Также будут тестироваться списки длиной до 10 000 000 элементов. 
 Убедитесь, что ваш код не затянется.
 */
+
+function sumPairs(ints, s) {
+    const a = new Set();
+    
+    for (let i = 0; i < ints.length; i++) {
+      const c = s - ints[i];
+      
+      if (a.has(c)) {
+        return [c, ints[i]];
+      }
+      
+      a.add(ints[i]);
+    }
+}
+
+console.log(sumPairs([11, 3, 7, 5], 10));
+console.log(sumPairs([4, 3, 2, 3, 4], 6));
+console.log(sumPairs([0, 0, -2, 3], 2));
+console.log(sumPairs([10, 5, 2, 3, 7, 5], 10));
