@@ -30,7 +30,7 @@ In Kotlin, Dart and Prolog: return `[]`.
 In Pascal: return Type TGap (0, 0).
 
 Examples:
-- gap(2, 5, 7) --> [5, 7] or (5, 7) or {5, 7}
+gap(2, 5, 7) --> [5, 7] or (5, 7) or {5, 7}
 
 gap(2, 5, 5) --> nil. In C++ {0, 0}. In F# [||]. In Kotlin, Dart and Prolog return []`
 
@@ -76,7 +76,7 @@ n (целое число >= m), который дает конец поиска 
 В Pascal: return Type TGap (0, 0).
 
 Примеры:
-- gap(2, 5, 7) --> [5, 7] или (5, 7) или {5, 7}
+gap(2, 5, 7) --> [5, 7] или (5, 7) или {5, 7}
 
 gap(2, 5, 5) --> nil. В C++ {0, 0}. В F# [||]. В Kotlin, Dart и Prolog return []`.
 
@@ -90,3 +90,31 @@ gap(6,100,110) --> nil или {0, 0} или ... : между 100 и 110 у на�
 
 Другие примеры возврата вы можете посмотреть в разделе Образцы тестов.
 */
+
+function gap(g, m, n) {
+    const isPrime = (x) => {
+      if (x < 2) {return false;}    
+      for (let i = 2; i <= Math.sqrt(x); i++) {
+        if (x % i === 0) {return false;}
+      }    
+      return true;
+    };
+      
+    let lastPrime = 0;
+    
+    for (let i = m; i <= n; i++) {
+      if (isPrime(i)) {
+        if (i - lastPrime === g) {
+          return [lastPrime, i];
+        }
+        lastPrime = i;
+      }
+    }  
+    
+    return null;
+}
+
+console.log(gap(2, 5, 7));
+console.log(gap(2, 5, 5));
+console.log(gap(4, 130, 200));
+console.log(gap(6,100,110));
