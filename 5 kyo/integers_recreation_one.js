@@ -34,3 +34,41 @@ list_squared(42, 250) --> [[42, 2500], [246, 84100]]
 list_squared(1, 250) --> [[1, 1], [42, 2500], [246, 84100]].
 list_squared(42, 250) --> [[42, 2500], [246, 84100]]
 */
+
+function listSquared(m, n) {
+    const result = [],
+          getDivisors = (x) => {
+            let divisors = [];
+            
+            for (let i = 1; i <= Math.sqrt(x); i++) {
+              if (x % i === 0) {
+                divisors.push(i);
+                
+                if (i !== x / i) {
+                  divisors.push(x / i);
+                }
+              }
+            }
+            
+            return divisors;
+          },
+          isSquare = (x) => {
+            return Math.sqrt(x) % 1 === 0;
+          };
+    
+    for (let i = m; i <= n; i++) {
+      let divisors = getDivisors(i),
+          sumOfSquares = divisors.reduce((s, d) => {
+            return s + d * d;
+          }, 0);
+      
+      if (isSquare(sumOfSquares)) {
+        result.push([i, sumOfSquares]);
+      }
+    }
+    
+    return result;
+}
+
+console.log(listSquared(1, 250));
+console.log(listSquared(42, 250));
