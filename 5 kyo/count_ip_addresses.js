@@ -24,3 +24,19 @@ Examples
 * При вводе "10.0.0.0", "10.0.1.0" => return 256 
 * С вводом "20.0.0.10", "20.0.1.0" => return 246
 */
+
+function ipsBetween(start, end){
+    let startArr = start.split('.'),
+        endArr = end.split('.'),
+        result = 0;
+    
+    for (let i = 0; i < 4; i++) {
+      result += (parseInt(endArr[i]) - parseInt(startArr[i])) * Math.pow(256, 3 - i);
+    }
+    
+    return result;
+}
+
+console.log(ipsBetween("10.0.0.0", "10.0.0.50"));
+console.log(ipsBetween("10.0.0.0", "10.0.1.0"));
+console.log(ipsBetween("20.0.0.10", "20.0.1.0"));
