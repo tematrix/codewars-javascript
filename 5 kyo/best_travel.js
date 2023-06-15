@@ -82,3 +82,28 @@ ys = [91, 74, 73, 85, 73, 81, 87] choose_best_sum(230, 3, ys) -> 228
 старайтесь не модифицировать входной список расстояний ls
 в некоторых языках этот "список" на самом деле является строкой (см. Тесты примеров).
 */
+
+function chooseBestSum(t, k, ls) {
+    let bestSum = null;
+    
+    const chooseTowns = (startIndex, townsVisited, currentSum) => {
+      if (townsVisited === k) {
+        if (currentSum <= t && (bestSum === null || currentSum > bestSum)) {
+          bestSum = currentSum;
+        }
+        return;
+      }
+      
+      for (let i = startIndex; i < ls.length; i++) {
+        chooseTowns(i + 1, townsVisited + 1, currentSum + ls[i]);
+      }
+    }
+    
+    chooseTowns(0, 0, 0);
+    
+    return bestSum;
+}
+
+console.log(chooseBestSum(163, 3, [50, 55, 56, 57, 58]));
+console.log(chooseBestSum(163, 3, [50]));
+console.log(chooseBestSum(230, 3, [91, 74, 73, 85, 73, 81, 87]));
