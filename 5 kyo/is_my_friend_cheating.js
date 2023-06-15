@@ -58,3 +58,20 @@ removeNb(26) должен возвращать [ { {15, 21}, {21, 15} }
 или
 removeNb(26) должен вернуть "15 21, 21 15"
 */
+
+function removeNb(n) {
+    let sum = n * (n + 1) / 2,
+        result = [];
+    
+    for (let i = 1; i < n; i++) {
+      let j = ((sum - i) / (i + 1));
+      
+      if (Number.isInteger(j) && j <= n) {
+        result.push([i, j]);
+      }
+    }
+    
+    return result;
+}
+
+console.log(removeNb(26));
