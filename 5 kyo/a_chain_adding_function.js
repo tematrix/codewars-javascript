@@ -46,3 +46,10 @@ addTwo(3); // == 5
 addTwo(3)(5); // == 10
 Мы можем предположить, что любое передаваемое число будет действительным целым числом.
 */
+
+function add(n) {
+    const func = x => add(n + x);
+    func.valueOf = () => n;
+  
+    return func;
+}
