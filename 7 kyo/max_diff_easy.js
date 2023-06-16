@@ -20,3 +20,10 @@ lst не отсортирован
 [1, 2, 3, 4] // возвращает 3, потому что 4 - 1 == 3
 [1, 2, 3, -4] // возвращает 7, потому что 3 - (-4) == 7
 */
+
+function maxDiff(list) {
+    return list.length <= 1 ? 0 : Math.max(...list) - Math.min(...list);
+}
+
+console.log(maxDiff([1, 2, 3, 4]));
+console.log(maxDiff([1, 2, 3, -4]));
