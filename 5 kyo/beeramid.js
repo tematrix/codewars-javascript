@@ -43,3 +43,18 @@ beeramid(5000, 3); // should === 16
 beeramid(1500, 2); // должно === 12
 beeramid(5000, 3); // должно === 16
 */
+
+const beeramid = (bonus, price) => {
+    let cans = Math.floor(bonus / price),
+        levels = 0;
+    
+    while (cans >= (levels + 1) ** 2) {
+      levels++;
+      cans -= levels ** 2;
+    }
+    
+    return levels;
+};
+
+console.log(beeramid(1500, 2));
+console.log(beeramid(5000, 3));
