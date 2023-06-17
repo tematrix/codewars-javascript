@@ -36,3 +36,15 @@ Note: In the C and NASM languages you are given the third parameter which is the
 [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]
 Примечание: В языках C и NASM вам предоставляется третий параметр, который является количеством сегментных блоков.
 */
+
+function dataReverse(data) {
+    const result = [];
+    
+    for (let i = 0; i < data.length; i += 8) {
+      result.unshift(...data.slice(i, i + 8));
+    }
+    
+    return result;
+}
+
+console.log(dataReverse([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]));
