@@ -18,3 +18,21 @@ orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]
 Пример:
 orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]].
 */
+
+function orderedCount(text) {
+    const list = new Map();
+  
+    for (let i = 0; i < text.length; i++) {
+      const letter = text[i];
+      list.set(letter, (list.get(letter) || 0) + 1);
+    }
+  
+    const result = [];
+    list.forEach((count, letter) => {
+      result.push([letter, count]);
+    });
+  
+    return result;
+}
+
+console.log(orderedCount("abracadabra"));
