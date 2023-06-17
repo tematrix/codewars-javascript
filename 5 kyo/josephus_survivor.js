@@ -50,3 +50,18 @@ n=7, k=3 => значит, в круге 7 человек.
 но поскольку будут использоваться гораздо большие числа, использование массива/списка для вычисления числа 
 выживших может оказаться слишком медленным; вы можете предположить, что и n, и k всегда будут >=1.
 */
+
+function josephusSurvivor(n, k){
+    const array = Array.from({ length: n }, (_, i) => i + 1);
+    
+    let index = 0;
+    
+    while (array.length > 1) {
+      index = (index + k - 1) % array.length;
+      array.splice(index, 1);
+    }
+    
+    return array[0];
+}
+
+console.log(josephusSurvivor(7, 3));
