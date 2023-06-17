@@ -88,3 +88,32 @@ inc a
 
 Map("a"->1)
 */
+
+function simple_assembler(program) {
+    const registers = {},
+          getValue = (o) => {
+            const n = parseInt(o);
+            if (!isNaN(n)) {return n;}
+            return registers[o] || 0;
+          }
+    
+    let pc = 0;
+    
+    while (pc < program.length) {
+      const [op, x, y] = program[pc].split(' ');
+      
+      switch (op) {
+          case 'mov': registers[x] = getValue(y); break;
+          case 'inc': registers[x]++; break;
+          case 'dec': registers[x]--; break;
+          case 'jnz':
+            if (getValue(x) !== 0) {
+              pc += getValue(y) - 1;
+            }
+            break;
+      }
+      pc++;
+    }
+    
+    return registers;
+}
