@@ -22,3 +22,11 @@ Examples
 [10, 20, 10, 2], [10, 25, 5, -2] --> 16,5, потому что (0 + 25 + 25 + 16) / 4
 [-1, 0], [0, -1] --> 1, потому что (1 + 1) / 2
 */
+
+const solution = (firstArray, secondArray) => {
+    return firstArray.reduce((s, e, i) => s + Math.pow(Math.abs(e - secondArray[i]), 2), 0) / firstArray.length;  
+};
+
+console.log(solution([1, 2, 3], [4, 5, 6]));
+console.log(solution([10, 20, 10, 2], [10, 25, 5, -2]));
+console.log(solution([-1, 0], [0, -1]));
