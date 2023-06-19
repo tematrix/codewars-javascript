@@ -32,3 +32,33 @@ part2:    o   e   a r s   = oears
 часть1: c d w = cdw
 часть2: o e a r s = oears
 */
+
+function isMerge(s, part1, part2) {
+    if (s.length !== part1.length + part2.length) {return false;}
+    
+    let table = new Array(part2.length + 1);
+    
+    for (let i = 0; i <= part2.length; i++) {
+      table[i] = new Array(part1.length + 1);
+      
+      for (let j = 0; j <= part1.length; j++) {
+        if (i === 0 && j === 0) {
+          table[i][j] = true;
+        } else if (i === 0) {
+          table[i][j] = (s[j - 1] === part1[j - 1] && table[i][j - 1]);
+        } else if (j === 0) {
+          table[i][j] = (s[i - 1] === part2[i - 1] && table[i - 1][j]);
+        } else if (s[i + j - 1] === part1[j - 1] && table[i][j - 1]) {
+          table[i][j] = true;
+        } else if (s[i + j - 1] === part2[i - 1] && table[i - 1][j]) {
+          table[i][j] = true;
+        } else {
+          table[i][j] = false;
+        }
+      }
+    }
+    
+    return table[part2.length][part1.length];
+}
+
+console.log(isMerge('codewars','cdw','oears'));
