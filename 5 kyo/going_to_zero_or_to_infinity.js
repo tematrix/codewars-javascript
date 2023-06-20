@@ -52,3 +52,15 @@ un = (1 / n!) * (1! + 2! + 3! + ... + n!)
 Подсказка
 Вы можете попытаться упростить выражение.
 */
+
+function going(n) {
+    let result = 1, a = 1;
+  
+    while (n > 1) {
+      a *= 1 / n;
+      result += a;
+      n--;
+    }
+  
+    return Math.floor(result * 1e6) / 1e6;
+}
