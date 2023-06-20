@@ -42,3 +42,59 @@ a.add(c); // выдает ошибку
 метод equals для проверки равенства двух векторов, имеющих одинаковые компоненты.
 Примечание: в тестовых примерах будет использоваться метод equals, предоставленный пользователем.
 */
+
+class Vector {
+    constructor(components) {
+      this.components = components;
+    }
+    
+    get length() {
+      return this.components.length;
+    }
+    
+    add(vector) {
+      if (this.length !== vector.length) {
+        throw new Error('Error');
+      }
+      
+      const result = this.components.map((c, i) => c + vector.components[i]);
+      
+      return new Vector(result);
+    }
+    
+    subtract(vector) {
+      if (this.length !== vector.length) {
+        throw new Error('Error');
+      }
+      
+      const result = this.components.map((c, i) => c - vector.components[i]);
+      
+      return new Vector(result);
+    }
+    
+    dot(vector) {
+      if (this.length !== vector.length) {
+        throw new Error('Error');
+      }
+      
+      return this.components.reduce((s, c, i) => s + c * vector.components[i], 0);
+    }
+    
+    norm() {
+      const sumOfSquares = this.components.reduce((s, c) => s + c ** 2, 0);
+      
+      return Math.sqrt(sumOfSquares);
+    }
+    
+    toString() {
+      return `(${this.components.join(',')})`;
+    }
+    
+    equals(vector) {
+      if (this.length !== vector.length) {
+        return false;
+      }
+      
+      return this.components.every((c, i) => c === vector.components[i]);
+    }
+}
