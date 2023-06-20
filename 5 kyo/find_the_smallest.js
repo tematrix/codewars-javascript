@@ -56,3 +56,27 @@ smallest(1000000) --> [1, 0, 6] или ...
 Примечание
 Посмотрите "Примеры тестов", чтобы увидеть входные и выходные данные на каждом языке
 */
+
+function smallest(n) {
+    const digits = [...n.toString()];  
+    let min = Number.MAX_SAFE_INTEGER, fromIndex, toIndex;
+    
+    for (let i = 0; i < digits.length; i++) {
+      for (let j = 0; j < digits.length; j++) {   
+        const tempDigits = [...digits],
+              [digit] = tempDigits.splice(i, 1);
+        
+        tempDigits.splice(j, 0, digit);
+        
+        const number = parseInt(tempDigits.join(''), 10);
+        
+        if (number < min) {
+          min = number;
+          fromIndex = i;
+          toIndex = j;
+        }
+      }
+    }
+    
+    return [min, fromIndex, toIndex];
+}
