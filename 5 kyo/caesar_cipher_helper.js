@@ -26,3 +26,45 @@ c.decode('BFKKQJX'); // возвращает 'WAFFLES'
 Если что-то в строке не входит в алфавит (например, знаки препинания, пробелы), просто оставьте все как есть.
 Сдвиг всегда будет в диапазоне [1, 26].
 */
+
+class CaesarCipher {
+    constructor(shift) {
+      this.shift = shift;
+    }
+    
+    encode(str) {
+      let result = '';
+      
+      for (let i = 0; i < str.length; i++) {
+        let charCode = str.charCodeAt(i);
+        
+        if (charCode >= 65 && charCode <= 90) {
+          result += String.fromCharCode(((charCode - 65 + this.shift) % 26) + 65);
+        } else if (charCode >= 97 && charCode <= 122) {
+          result += String.fromCharCode(((charCode - 97 + this.shift) % 26) + 97);
+        } else {
+          result += str[i];
+        }
+      }
+      
+      return result.toUpperCase();
+    }
+    
+    decode(str) {
+      let result = '';
+      
+      for (let i = 0; i < str.length; i++) {
+        let charCode = str.charCodeAt(i);
+        
+        if (charCode >= 65 && charCode <= 90) {
+          result += String.fromCharCode(((charCode - 65 - this.shift + 26) % 26) + 65);
+        } else if (charCode >= 97 && charCode <= 122) {
+          result += String.fromCharCode(((charCode - 97 - this.shift + 26) % 26) + 65);
+        } else {
+          result += str[i];
+        }
+      }
+      
+      return result.toUpperCase();
+    }
+}
