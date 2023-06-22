@@ -72,3 +72,35 @@ convertFracs [(1, 2), (1, 3), (1, 4)] `shouldBe` [(6, 12), (4, 12), (3, 12)].
 Примечание для Bash:
 входные данные - это строка, например, "2,4,2,6,2,8", а выходные - "6 12 4 12 3 12".
 */
+
+function convertFrac(lst){
+    let lcm = 1;
+    
+    const getGcd = (a, b) => {
+      while (b > 0) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+      }
+      return a;
+    };
+    
+    const getLcm = (a, b) => {
+      return (a * b) / getGcd(a, b);
+    };
+    
+    for (let i = 0; i < lst.length; i++) {
+      lcm = getLcm(lcm, lst[i][1]);
+    }
+    
+    let result = '';
+    
+    for (let i = 0; i < lst.length; i++) {
+      let factor = lcm / lst[i][1],
+          numerator = factor * lst[i][0];
+      
+      result += `(${numerator},${lcm})`;
+    }
+    
+    return result;
+}
