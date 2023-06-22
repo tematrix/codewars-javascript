@@ -67,3 +67,17 @@ to Principal 'P' this should return 0 Years.
 Однако лучше принять во внимание, что если желаемый основной капитал 'D' равен 
 принципу 'P', это должно вернуть 0 лет.
 */
+
+function calculateYears(principal, interest, tax, desired) {
+    let years = 0;
+    
+    while (principal < desired) {
+      let interestEarned = principal * interest,
+          taxesPaid = interestEarned * tax;
+      
+      principal += interestEarned - taxesPaid;
+      years++;
+    }
+    
+    return years;
+}
