@@ -47,3 +47,49 @@ parseMolecule(fremySalt); // return {K: 4, O: 14, N: 2, S: 4}
 Обратите внимание, что скобки могут быть круглыми, квадратными или фигурными, 
 а также могут быть вложенными. Индекс после скобок необязателен.
 */
+
+function parseMolecule(formula) {
+    const stack = [{}];
+  
+    const parseFormula = () => {
+      while (index < formula.length) {
+        if (formula[index] === '(' || formula[index] === '[' || formula[index] === '{') {
+          stack.push({});
+          index++;
+          parseFormula();
+        }
+        else if (formula[index] === ')' || formula[index] === ']' || formula[index] === '}') {
+          const subFormula = stack.pop();
+          index++;
+          let num = "";
+          while (index < formula.length && /[0-9]/.test(formula[index])) {
+            num += formula[index];
+            index++;
+          }
+          num = num ? parseInt(num) : 1;
+          for (const atom in subFormula) {
+            stack[stack.length - 1][atom] = (stack[stack.length - 1][atom] || 0) + subFormula[atom] * num;
+          }
+          return;
+        }
+        else {
+          let atom = "";
+          atom += formula[index++];
+          while (index < formula.length && /[a-z]/.test(formula[index])) {
+            atom += formula[index++];
+          }
+          let num = "";
+          while (index < formula.length && /[0-9]/.test(formula[index])) {
+            num += formula[index++];
+          }
+          num = num ? parseInt(num) : 1;
+          stack[stack.length - 1][atom] = (stack[stack.length - 1][atom] || 0) + num;
+        }
+      }
+    };
+  
+    let index = 0;
+    parseFormula();
+  
+    return stack[0];
+}
