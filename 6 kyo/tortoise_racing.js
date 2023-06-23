@@ -44,3 +44,15 @@ Pascal, COBOL, Erlang, [-1, -1, -1] для Perl,[] для Kotlin или "-1 -1 -
 race(720, 850, 70) => [0, 32, 18] или "0 32 18"
 race(80, 91, 37) => [3, 21, 49] или "3 21 49"
 */
+
+function race(v1, v2, g) {
+  
+    if (v2 <= v1) {return null;}
+  
+    const timeInSeconds = Math.floor(g / (v2 - v1) * 3600),
+          hours = Math.floor(timeInSeconds / 3600),
+          minutes = Math.floor((timeInSeconds % 3600) / 60),
+          seconds = timeInSeconds % 60;
+  
+    return [hours, minutes, seconds];
+}
