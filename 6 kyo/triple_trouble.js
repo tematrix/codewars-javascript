@@ -38,3 +38,20 @@ tripledouble(12345, 12345) == 0
 
 tripledouble(666789, 12345667) == 1
 */
+
+function tripledouble(num1, num2) {
+    const str1 = num1.toString(),
+          str2 = num2.toString();
+  
+    for (let i = 0; i < str1.length - 2; i++) {
+      const triple = str1.substr(i, 3);
+      
+      if (triple[0] === triple[1] && triple[1] === triple[2]) {
+        if (str2.includes(triple[0] + triple[0])) {
+          return 1;
+        }
+      }
+    }
+  
+    return 0;
+}
