@@ -22,3 +22,21 @@ Math.round()
 Math.ceil()
 Math.floor()
 */
+
+Math.round = function(number) {
+    const integer = parseInt(number),
+          decimal = number - integer;
+    
+    return decimal >= 0.5 ? integer + 1 : integer;
+};
+  
+Math.ceil = function(number) {
+    const integer = parseInt(number),
+          decimal = number - integer;
+    
+    return decimal > 0 ? integer + 1 : integer;
+};
+  
+Math.floor = function(number) {
+    return parseInt(number);
+};
