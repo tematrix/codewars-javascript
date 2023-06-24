@@ -28,3 +28,23 @@ decipherThis('82yade 115te 103o'); // 'Ready set go'
 decipherThis('72olle 103doo 100ya'); // 'Здравствуйте, добрый день'
 decipherThis('82yade 115te 103o'); // 'Ready set go'
 */
+
+function decipherThis(str) {
+    const words = str.split(' '),
+          decodedWords = words.map(word => {
+            const charCode = parseInt(word),
+                  rest = word.slice(String(charCode).length);
+  
+            let newWord = String.fromCharCode(charCode);
+  
+            if (rest.length > 1) {
+              newWord += rest[rest.length - 1] + rest.slice(1, -1) + rest[0];
+            } else {
+              newWord += rest;
+            }
+  
+            return newWord;
+          });
+  
+    return decodedWords.join(' ');
+}
