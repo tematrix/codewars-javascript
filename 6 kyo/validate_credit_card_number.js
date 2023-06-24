@@ -72,3 +72,19 @@ the original credit card number is valid.
 
 18 (по модулю) 10 ==> 8 , что не равно 0, поэтому это не действительный номер кредитной карты
 */
+
+function validate(n){
+    const digits = n.toString().split('').map(Number);
+  
+    for (let i = digits.length - 2; i >= 0; i -= 2) {
+      digits[i] *= 2;
+      
+      if (digits[i] > 9) {
+        digits[i] -= 9;
+      }
+    }
+  
+    const sum = digits.reduce((s, e) => s + e, 0);
+  
+    return sum % 10 === 0;
+}
