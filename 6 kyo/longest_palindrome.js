@@ -29,3 +29,29 @@ Example:
 "zzbaabcd" -> 4
 "" -> 0
 */
+
+function longestPalindrome(s) {
+    let maxLength = 0;
+  
+    for (let i = 0; i < s.length; i++) {
+      for (let j = i + 1; j <= s.length; j++) {
+        const substring = s.slice(i, j);
+        
+        if (isPalindrome(substring) && substring.length > maxLength) {
+          maxLength = substring.length;
+        }
+      }
+    }
+  
+    return maxLength;
+}
+  
+  function isPalindrome(s) {
+    for (let i = 0; i < s.length / 2; i++) {
+      if (s[i] !== s[s.length - 1 - i]) {
+        return false;
+      }
+    }
+    
+    return true;
+}
