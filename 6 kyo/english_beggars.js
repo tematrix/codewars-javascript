@@ -42,3 +42,13 @@ Note 2: do not modify the input array.
 
 Примечание 2: не изменяйте входной массив.
 */
+
+function beggars(values, n){
+    let result = new Array(n).fill(0);
+    
+    for (let i = 0; i < values.length; i++) {
+      result[i % n] += values[i];
+    }
+    
+    return result;
+}
