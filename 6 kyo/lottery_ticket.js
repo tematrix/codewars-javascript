@@ -38,3 +38,21 @@ All inputs will be in the correct format. Strings on tickets are not always the 
 
 Все вводимые данные будут иметь правильный формат. Строки в билетах не всегда имеют одинаковую длину.
 */
+
+function bingo(ticket, win){
+    let count = 0;
+    
+    for (let i = 0; i < ticket.length; i++) {
+      let str = ticket[i][0],
+          num = ticket[i][1];
+      
+      for (let j = 0; j < str.length; j++) {
+        if (str.charCodeAt(j) === num) {
+          count++;
+          break;
+        }
+      }
+    }
+    
+    return count >= win ? 'Winner!' : 'Loser!'; 
+}
