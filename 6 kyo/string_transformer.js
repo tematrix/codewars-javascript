@@ -24,3 +24,22 @@ You may assume the input only contain English alphabet and spaces.
 "Пример ввода" ==> "iNPUT eXAMPLE".
 Вы можете считать, что входные данные содержат только английский алфавит и пробелы.
 */
+
+function stringTransformer(str) {
+    return str.split(' ')
+              .map(w => {
+                 let transformed = '';
+      
+                 for (let i = 0; i < w.length; i++) {
+                   if (w[i] === w[i].toUpperCase()) {
+                     transformed += w[i].toLowerCase();
+                   } else {
+                     transformed += w[i].toUpperCase();
+                   }
+                 }
+      
+                 return transformed;
+              })
+              .reverse()
+              .join(' '); 
+} 
