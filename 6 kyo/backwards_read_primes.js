@@ -36,3 +36,29 @@ backwardsPrime(2, 100) => [13, 17, 31, 37, 71, 73, 79, 97] backwardsPrime(9900, 
 backwardsPrime(2, 100) => [13, 17, 31, 37, 71, 73, 79, 97] backwardsPrime(9900, 10000) =>. 
 [9923, 9931, 9941, 9967] backwardsPrime(501, 599) => []
 */
+
+function backwardsPrime(start, stop) {
+    const result = [],
+          isPrime = (n) => {
+            if (n < 2) {
+              return false;
+            }
+            
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+              if (n % i === 0) {
+                return false;
+              }
+            }
+            return true;
+          };
+    
+    for (let n = start; n <= stop; n++) {
+      if (isPrime(n)) {
+        const reverseN = parseInt(n.toString().split("").reverse().join(""));
+        if (n !== reverseN && isPrime(reverseN)) {
+          result.push(n);
+        }
+      }
+    }
+    return result;
+}
