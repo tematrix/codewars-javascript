@@ -28,3 +28,13 @@ Example: (Input --> output)
 ['ninja', '', 'ronin'] --> "ниндзя и ронин"
 [] -->""
 */
+
+function formatWords(words) {
+    if (!words || words.length === 0) {
+      return '';
+    }
+    
+    words = words.filter(e => e !== '');
+    
+    return words.length === 0 ? '' : words.length === 1 ? words[0] : words.slice(0, -1).join(', ') + ' and ' + words.slice(-1);
+}
