@@ -70,3 +70,29 @@ which will make the sum of the List equal the closest prime number (191).
 то минимальное число, которое необходимо вставить для преобразования суммы в простое число, равно (2), 
 что сделает сумму списка равной ближайшему простому числу (191).
 */
+
+function minimumNumber(numbers){
+    const sum = numbers.reduce((acc, val) => acc + val);
+    
+    let num = sum;
+    
+    while (!isPrime(num)) {
+      num++;
+    }
+    
+    return num - sum;
+}
+  
+  function isPrime(num) {
+    if (num < 2) {
+      return false;
+    }
+    
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+    
+    return true;
+}
