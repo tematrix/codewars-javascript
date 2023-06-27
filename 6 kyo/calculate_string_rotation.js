@@ -36,3 +36,17 @@ Examples:
 "эшам", "эшам" => 0
 "собака", "бог" => -1
 */
+
+function shiftedDiff(first, second) {
+    if (first.length !== second.length) {
+      return -1;
+    }
+    
+    for (let i = 0; i < second.length; i++) {
+      if (second.slice(i) + second.slice(0, i) === first) {
+        return i;
+      }
+    }
+    
+    return -1;
+}
