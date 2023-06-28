@@ -66,3 +66,19 @@ alphabetWar("*zd*qm*wp*bs*"); //=> Давайте сразимся снова!
 alphabetWar("zzzz*s*"); //=> Правая сторона побеждает!
 alphabetWar("www*www****z"); //=> Левая сторона побеждает!
 */
+
+function alphabetWar(fight) {
+    const base = {'w':4,'p':3,'b':2,'s':1,'m':-4,'q':-3,'d':-2,'z':-1},
+          result = [],
+          array = fight.split('');
+    
+    for (let i = 0; i < fight.length; i++) {
+      if (array[i - 1] !== '*' && array[i] !== '*' && array[i + 1] !== '*') {
+        result.push(array[i]);
+      }
+    }
+    
+    let sum = result.reduce((s,e) => s + (base[e] ? base[e] : 0), 0);
+    
+    return sum < 0 ? 'Right side wins!' : sum > 0 ? 'Left side wins!' : 'Let\'s fight again!';
+}
