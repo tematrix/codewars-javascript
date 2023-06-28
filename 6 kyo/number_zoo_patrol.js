@@ -40,3 +40,11 @@ Examples:
 [1, 2, 3] => 4
 [4, 2, 3] => 1
 */
+
+function findNumber(array) {
+    const n = array.length + 1,
+          sum = (n * (n + 1)) / 2,
+          actualSum = array.reduce((s, e) => s + e, 0);
+    
+    return sum - actualSum;
+}
