@@ -45,3 +45,10 @@ max_ball(25) должно возвращать 7
 Максимальная высота, зарегистрированная устройством, 
 не обязательно является максимальной высотой, достигнутой мячом.
 */
+
+function maxBall(v) {
+    const speed = (v * 1000) / 3600, g = 9.81, time = speed / g,
+          maxHeight = (speed * speed) / (2 * g);
+    
+    return maxHeight === 0 ? 0 : Math.round(time * 10);
+}
