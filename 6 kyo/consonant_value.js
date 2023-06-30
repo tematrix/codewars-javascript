@@ -38,3 +38,25 @@ solve("zodiacs") = 26
 
 Для C: не мутируйте входные данные.
 */
+
+function solve(s) {
+    const consonants = 'bcdfghjklmnpqrstvwxyz';
+    let maxVal = 0;
+  
+    for (let i = 0; i < s.length; i++) {
+      if (consonants.includes(s[i])) {
+        let val = 0;
+        for (let j = i; j < s.length; j++) {
+          if (!consonants.includes(s[j])) {
+            break;
+          }
+          val += s.charCodeAt(j) - 96;
+        }
+        if (val > maxVal) {
+          maxVal = val;
+        }
+      }
+    }
+  
+    return maxVal;
+}
