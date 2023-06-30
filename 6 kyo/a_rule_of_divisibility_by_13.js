@@ -111,3 +111,19 @@ thirt(1234567) вычисляет 178, затем 87, затем 87 и возв�
 
 thirt(321) вычисляет 48, 48, 48 и возвращает 48
 */
+
+function thirt(n) {
+    const pattern = [1, 10, 9, 12, 3, 4];
+    let sum = n, lastSum = 0;
+  
+    while (sum !== lastSum) {
+      lastSum = sum;
+      sum = sum
+        .toString()
+        .split("")
+        .reverse()
+        .reduce((acc, digit, i) => acc + digit * pattern[i % pattern.length], 0);
+    }
+  
+    return sum;
+}
