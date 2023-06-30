@@ -52,3 +52,17 @@ If an array with one element is folded, it stays as the same array.
 
 Если складывается массив с одним элементом, то он остается тем же массивом.
 */
+
+function foldArray(array, runs) {
+    let result = array.slice();
+  
+    for (let i = 0; i < runs; i++) {
+      const midpoint = Math.floor(result.length / 2);
+  
+      for (let j = 0; j < midpoint; j++) {
+        result[j] += result.pop();
+      }
+    }
+  
+    return result;
+}
