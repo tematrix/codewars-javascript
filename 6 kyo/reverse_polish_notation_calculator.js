@@ -28,3 +28,26 @@ You may assume that there won't be exceptional situations (like stack underflow 
 
 Вы можете предположить, что исключительных ситуаций (таких как переполнение стека или деление на ноль) не будет.
 */
+
+function calc(expr) {
+    let stack = [];
+  
+    const operations = {
+      '+': (a, b) => a + b,
+      '-': (a, b) => a - b,
+      '*': (a, b) => a * b,
+      '/': (a, b) => a / b,
+    };
+  
+    for (let token of expr.split(' ')) {
+      if (token in operations) {
+        let b = stack.pop();
+        let a = stack.pop();
+        stack.push(operations[token](a, b));
+      } else {
+        stack.push(parseFloat(token));
+      }
+    }
+  
+    return stack.pop() || 0;
+}
