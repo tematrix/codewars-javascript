@@ -52,3 +52,13 @@ abbreviate("elephant-rides are really fun!")
 // "-" " " " " " " "!"
 === "e6t-r3s are r4y fun!"
 */
+
+function abbreviate(string) {
+    return string.replace(/\w{4,}/g, function(word) {
+      let first = word.charAt(0),
+          last = word.charAt(word.length - 1),
+          middle = word.length - 2;
+      
+      return first + middle + last;
+    });
+}
