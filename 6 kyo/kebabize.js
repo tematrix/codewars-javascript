@@ -20,3 +20,7 @@ the returned string should only contain lowercase letters
 Примечания:
 возвращаемая строка должна содержать только строчные буквы
 */
+
+function kebabize(str) {
+    return str.replace(/\d+/g, '').split(/(?=[A-Z])/).join('-').toLowerCase();
+}
