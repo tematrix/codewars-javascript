@@ -88,3 +88,25 @@ return [6, 766] or (6, 766)
 nbMonths(12000, 8000, 1000, 1.5) должно вернуть [0, 4000]
 nbMonths(8000, 8000, 1000, 1.5) должно вернуть [0, 0]
 */
+
+function nbMonths(startPriceOld, startPriceNew, savingPerMonth, percentLossByMonth) {
+    let months = 0,
+        savings = 0,
+        priceOld = startPriceOld,
+        priceNew = startPriceNew,
+        percentLoss = percentLossByMonth / 100;
+  
+    while (savings + priceOld < priceNew) {
+        months++;
+      
+        if (months % 2 === 0) {
+            percentLoss += 0.005;
+        }
+      
+        priceOld -= priceOld * percentLoss;
+        priceNew -= priceNew * percentLoss;
+        savings += savingPerMonth;
+    }
+  
+    return [months, Math.round(savings + priceOld - priceNew)];
+}
