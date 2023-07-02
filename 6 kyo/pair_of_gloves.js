@@ -30,3 +30,20 @@ input = ["красный", "зеленый", "красный", "синий", "с
 вход = ["красный", "красный", "красный", "красный", "красный", "красный"].
 результат = 3 (3 красные пары)
 */
+
+function numberOfPairs(gloves) {
+    let pairs = 0, colors = {};
+    
+    for (let i = 0; i < gloves.length; i++) {
+      let color = gloves[i];
+      
+      if (colors[color]) {
+        pairs++;
+        colors[color] = colors[color] - 1;
+      } else {
+        colors[color] = (colors[color] || 0) + 1;
+      }
+    }
+    
+    return pairs;
+}
