@@ -26,3 +26,35 @@ count(null, 1) => 0
 count(1 -> 2 -> 3 -> null, 1) => 1
 count(1 -> 1 -> 1 -> 2 -> 2 -> 2 -> 2 -> 3 -> 3 -> null, 2) => 4
 */
+
+function Node(data) {
+    this.data = data;
+    this.next = null;
+}
+  
+function length(head) {
+    let count = 0,
+        current = head;
+    
+    while (current !== null) {
+      count++;
+      current = current.next;
+    }
+    
+    return count;
+}
+  
+function count(head, data) {
+    let count = 0,
+        current = head;
+    
+    while (current !== null) {
+      if (current.data === data) {
+        count++;
+      }
+      
+      current = current.next;
+    }
+    
+    return count;
+}
