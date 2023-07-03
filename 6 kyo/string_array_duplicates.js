@@ -24,3 +24,17 @@ dup(["kelless", "keenness"]) = ["keles", "kenes"].
 
 Строки будут только в нижнем регистре, без пробелов. Дополнительные примеры см. в тестовых примерах.
 */
+
+function dup(s) {
+    return s.map(e => {
+      let result = '';
+      
+      for (let i = 0; i < e.length; i++) {
+        if (e[i] !== e[i+1]) {
+          result += e[i];
+        }
+      }
+      
+      return result;
+    });
+}
