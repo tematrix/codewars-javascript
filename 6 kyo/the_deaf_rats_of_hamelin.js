@@ -36,3 +36,13 @@ ex1 ~O~O~O~O~O P имеет 0 глухих крыс
 ex2 P O~ O~ O~ ~O O~ имеет 1 глухую крысу
 ex3 ~O~O~O~O~OP~O~OO~ имеет 2 глухих крысы
 */
+
+function countDeafRats(town) {
+    const rats = town.replace(/\s/g, '').split('P'),
+          leftRats = rats[0].match(/.{1,2}/g) || [],
+          rightRats = rats[1].match(/.{1,2}/g) || [],
+          deafLeft = leftRats.filter(rat => rat === 'O~').length,
+          deafRight = rightRats.filter(rat => rat === '~O').length;
+    
+    return deafLeft + deafRight;
+}
