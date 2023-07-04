@@ -18,3 +18,11 @@ chained([a,b,c,d])(input)
 
 d(c(b(a(input))))
 */
+
+function chained(functions) {
+    return function(input) {
+        return functions.reduce(function(result, fn) {
+            return fn(result);
+        }, input);
+    };
+}
