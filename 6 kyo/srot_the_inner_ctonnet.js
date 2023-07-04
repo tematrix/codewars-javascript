@@ -36,3 +36,11 @@ I have also created other katas. Take a look if you enjoyed this kata!
 
 Я также создал другие ката. Посмотрите, если вам понравилась эта ката!
 */
+
+function sortTheInnerContent(words) {
+    return words.split(' ').map(function(word) {
+      return word.length <= 2 ? word : word[0] + word.slice(1, -1).split('').sort(function(a, b) {
+        return b.charCodeAt(0) - a.charCodeAt(0);
+      }).join('') + word.slice(-1);
+    }).join(' ');
+}
