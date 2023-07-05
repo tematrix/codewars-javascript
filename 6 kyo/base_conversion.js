@@ -76,3 +76,30 @@ convert("SAME", Alphabet.ALPHA_UPPER, Alphabet.ALPHA_UPPER); // должно в�
 Функция должна работать для любых произвольных алфавитов, а не только для предопределенных.
 Не нужно учитывать отрицательные числа
 */
+
+function convert(input, source, target) {
+    let sourceBase = source.length,
+        targetBase = target.length,
+        decimal = 0,
+        factor = 1;
+  
+    for (let i = input.length - 1; i >= 0; i--) {
+      let index = source.indexOf(input[i]);
+      
+      decimal += index * factor;
+      factor *= sourceBase;
+    }
+  
+    let result = '';
+    
+    while (decimal > 0) {
+      let index = decimal % targetBase;
+      
+      result = target[index] + result;
+      decimal = Math.floor(decimal / targetBase);
+    }
+  
+    if (input === '0') {return target[0];}
+  
+    return result;
+}
