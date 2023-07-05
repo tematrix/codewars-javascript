@@ -78,3 +78,37 @@ travel(r, "NY 5643") --> "NY 5643:/".
 Примечание:
 Вы можете увидеть несколько адресов и почтовых индексов в тестовых примерах.
 */
+
+function travel(r, zipcode) {
+    let regex = new RegExp('(\\d+)\\s+([a-zA-Z\\.\\s]+)\\s+' + zipcode + '$'),
+        addresses = r.split(','),
+        result = {};
+    
+    addresses.forEach(function(address) {
+      let match = address.match(regex);
+      
+      if (match) {
+        let street = match[2],
+            number = match[1];
+        
+        if (!result[zipcode]) {
+          result[zipcode] = {
+            streets: [],
+            numbers: []
+          };
+        }
+        
+        result[zipcode].streets.push(street);
+        result[zipcode].numbers.push(number);
+      }
+    });
+    
+    if (!result[zipcode]) {
+      return zipcode + ':/';
+    }
+    
+    let streets = result[zipcode].streets.join(','),
+        numbers = result[zipcode].numbers.join(',');
+    
+    return zipcode + ':' + streets + '/' + numbers;
+}
