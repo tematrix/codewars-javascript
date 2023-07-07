@@ -34,3 +34,9 @@ grabscrab("ortsp", ["sport", "parrot", "ports", "matey"] )
 
 Возвращать совпадения в том же порядке, что и в словаре. Вернуть пустой массив, если совпадений нет.
 */
+
+function grabscrab(anagram, dictionary) {
+    return dictionary.filter(function(word) {
+      return word.split('').sort().join('') === anagram.split('').sort().join('');
+    });
+}
