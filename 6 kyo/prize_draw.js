@@ -80,3 +80,23 @@ n: 4
 
 Дополнительные примеры см. в разделе Примеры тестовых примеров.
 */
+
+function rank(st, we, n) {
+    if (st === '') {return 'No participants';}
+    
+    const names = st.split(','),
+          participants = names.length;
+    
+    if (we.length < participants) {return 'Not enough participants';}
+    
+    const scores = names.map((name, i) => {
+      const nameScore = [...name].reduce((acc, char) => (acc + char.toUpperCase().charCodeAt() - 64), 0);
+      return (nameScore + name.length) * we[i];
+    });
+    
+    const sorted = names.map((name, i) => ({ name, score: scores[i] })).sort((a, b) => {
+      return b.score - a.score || a.name.localeCompare(b.name);
+    });
+    
+    return (n > participants) ? 'Not enough participants' : sorted[n - 1].name;
+}
