@@ -32,3 +32,13 @@ zipWith( Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1] ) => [4,7,7,4,7,7]
 zipWith( function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3] ) => [0,2,4,6] // Обе формы действительны
 zipWith( (a,b) => a+b, [0,1,2,3], [0,1,2,3] ) => [0,2,4,6] // Обе формы являются функциями
 */
+
+function zipWith(fn, a0, a1) {
+    const result = [];
+    
+    for (let i = 0; i < Math.min(a0.length, a1.length); i++) {
+      result.push(fn(a0[i], a1[i]));
+    }
+    
+    return result;
+}
