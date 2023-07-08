@@ -98,3 +98,21 @@ oper(selfie_and_rot, s) => "abcd....\nefgh....\nijkl....\nmnop....\n....ponm\n..
 Входные строки разделяются символом , вместо \n. 
 Выходные строки должны быть разделены \r вместо \n. См. "Примеры тестов".
 */
+
+function rot(strng) {
+    return strng.split('\n').reverse().map(e => e.split('').reverse().join('')).join('\n');
+}
+
+function selfieAndRot(strng) {
+    const arr = strng.split('\n'),
+          dots = '.'.repeat(arr[0].length),
+          arrWithDots = arr.map(e => e + dots),
+          rotated = rot(strng),
+          arrRotated = rotated.split('\n').map(e => dots + e);
+    
+    return arrWithDots.concat(arrRotated).join('\n');
+}
+
+function oper(fct, s) {
+    return fct(s);
+}
