@@ -70,3 +70,24 @@ howmuch(0, 200) => [["M: 37", "B: 5", "C: 4"], ["M: 100", "B: 14", "C: 11"], ["M
 он может купить 7 лодок стоимостью 14 каждая: 100 - 7 * 14 = 2
 или он может купить 9 автомобилей стоимостью 11: 100 - 9 * 11 = 1
 */
+
+function howMuch(m, n) {
+    const result = [];
+    
+    if (m > n) {
+      const temp = m;
+      m = n;
+      n = temp;
+    }
+    
+    for (let i = m; i <= n; i++) {
+      if (i % 9 === 1 && i % 7 === 2) {
+        const c = Math.floor(i / 9),
+              b = Math.floor(i / 7);
+        
+        result.push(['M: ' + i, 'B: ' + b, 'C: ' + c]);
+      }
+    }
+    
+    return result;
+}
