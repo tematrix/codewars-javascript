@@ -44,3 +44,21 @@ Only positive numbers greater than zero will be passed as an input.
 Напишите функцию с именем computeDepth, которая вычисляет глубину своего целочисленного аргумента.
 В качестве входных данных будут передаваться только положительные числа, большие нуля.
 */
+
+function computeDepth(x) {
+    const digits = new Set();
+    
+    let i = 1;
+    while (digits.size < 10) {
+      const multiple = x * i,
+            strMultiple = multiple.toString();
+      
+      for (let j = 0; j < strMultiple.length; j++) {
+        digits.add(strMultiple[j]);
+      }
+      
+      i++;
+    }
+    
+    return i - 1;
+}
