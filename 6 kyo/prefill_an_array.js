@@ -57,3 +57,11 @@ v может быть любым (примитивным или иным)
     prefill("xyz", 1)
       --> выбрасывает TypeError с сообщением "xyz is invalid".
 */
+
+function prefill(n, v) {
+    if (isNaN(parseInt(n)) || parseInt(n) < 0 || !Number.isInteger(Number(n))) {
+        throw new TypeError(`${n} is invalid`);
+    }
+    
+    return Array(parseInt(n)).fill(v);
+}
