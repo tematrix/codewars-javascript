@@ -30,3 +30,9 @@ f3(a) = f1( f2( a ) )
 compose(f , g)(x)
 => f( g( x ) )
 */
+
+function compose(f,g) {
+    return function (...arguments) {
+      return f(g(...arguments));
+    };
+}
